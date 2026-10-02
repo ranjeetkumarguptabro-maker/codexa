@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { ArrowRight, LayoutTemplate, ShoppingBag, Bot, Smartphone, Eye, Sparkles } from 'lucide-react';
+import { ArrowRight, LayoutTemplate, ShoppingBag, Bot, Smartphone, Eye, Sparkles, Globe, Play } from 'lucide-react';
 import CaseStudyModal from './CaseStudyModal.jsx';
 
 export default function RecentWork() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalProject, setModalProject] = useState('kangaroo');
   const [featuredMobileIndex, setFeaturedMobileIndex] = useState(0); // 0: Kangaroo, 1: Blind AI, 2: SpendSense, 3: Planitory
+  const [featuredWebsiteIndex, setFeaturedWebsiteIndex] = useState(0); // 0: Norvique, 1: E-commerce Store
 
   const getTargetProject = () => {
     if (featuredMobileIndex === 3) return 'planitory';
@@ -23,7 +24,7 @@ export default function RecentWork() {
     {
       id: 'saas',
       title: 'SaaS Dashboard',
-      category: 'Web Application',
+      category: 'Website',
       icon: LayoutTemplate,
       iconBg: 'bg-purple-100 text-purple-600',
       tag: 'Live Product',
@@ -49,31 +50,112 @@ export default function RecentWork() {
       ),
     },
     {
-      id: 'ecommerce',
-      title: 'E-commerce Store',
+      id: 'norvique-website',
+      title: 'Norvique Real Estate',
       category: 'Website',
-      icon: ShoppingBag,
-      iconBg: 'bg-emerald-100 text-emerald-600',
-      tag: 'Modern Shop',
+      icon: Globe,
+      iconBg: 'bg-amber-100 text-amber-700',
+      tag: 'Video & Flow Tour',
+      isClickable: true,
+      targetProject: 'norvique',
       preview: (
-        <div className="w-full h-44 bg-[#F8FAFC] rounded-xl p-4 border border-gray-200 flex flex-col justify-between">
-          <div className="flex items-center justify-between text-xs text-gray-700 font-bold">
-            <span>Discover Modern Style</span>
-            <span className="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded text-[10px]">
-              Fast Checkout
+        <div className="w-full h-44 bg-gradient-to-br from-[#12141F] via-[#1A1826] to-[#0A0C14] rounded-xl overflow-hidden relative text-white flex flex-col justify-between p-3 border border-amber-500/30 group-hover:border-amber-400 transition-all shadow-inner">
+          {/* Project Switcher mini tabs */}
+          <div className="flex items-center justify-between z-10">
+            <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md p-0.5 rounded-lg border border-white/10 text-[9px]">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFeaturedWebsiteIndex(0);
+                }}
+                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                  featuredWebsiteIndex === 0
+                    ? 'bg-amber-600 text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Norvique
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFeaturedWebsiteIndex(1);
+                }}
+                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                  featuredWebsiteIndex === 1
+                    ? 'bg-emerald-600 text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                E-commerce
+              </button>
+            </div>
+
+            <span className="text-amber-400 font-bold text-[10px] bg-amber-400/20 px-1.5 py-0.5 rounded-full border border-amber-400/30 flex items-center gap-1">
+              <Play className="w-2.5 h-2.5 fill-current" />
+              49s Tour
             </span>
           </div>
-          <div className="grid grid-cols-2 gap-2 my-2">
-            <div className="h-16 bg-purple-50 rounded-lg border border-purple-100 flex items-center justify-center text-xs font-semibold text-purple-700">
-              Product 01
+
+          {featuredWebsiteIndex === 0 ? (
+            /* Norvique Preview */
+            <div className="flex items-center gap-3 my-auto z-10">
+              <div className="w-16 h-20 rounded-lg overflow-hidden border border-amber-400/30 shadow-md shrink-0 bg-black relative">
+                <img
+                  src="/assets/Norvique Video Poster.png"
+                  alt="Norvique Luxury Estate"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/35 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-white/90 text-black flex items-center justify-center shadow-md">
+                    <Play className="w-3 h-3 fill-current ml-0.5" />
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[11px] font-bold text-white leading-tight">
+                  Norvique Real Estate
+                </p>
+                <p className="text-[10px] text-amber-300 font-medium">
+                  Curated Luxury Villas • Latvia
+                </p>
+                <p className="text-[9px] text-gray-300">
+                  Video Tour • 8-Step Flow • Concierge
+                </p>
+                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-amber-600/90 px-2 py-0.5 rounded mt-1">
+                  <span>Explore Case Study</span>
+                  <ArrowRight className="w-2.5 h-2.5" />
+                </div>
+              </div>
             </div>
-            <div className="h-16 bg-blue-50 rounded-lg border border-blue-100 flex items-center justify-center text-xs font-semibold text-blue-700">
-              Product 02
+          ) : (
+            /* E-commerce Store Preview */
+            <div className="space-y-2 my-auto z-10">
+              <div className="flex items-center justify-between text-xs text-gray-200 font-bold">
+                <span>Modern Shop</span>
+                <span className="text-emerald-400 bg-emerald-500/20 px-2 py-0.5 rounded text-[10px]">
+                  Fast Checkout
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="h-12 bg-white/10 rounded-lg border border-white/10 flex items-center justify-center text-[10px] font-semibold text-gray-200">
+                  Curated Catalog
+                </div>
+                <div className="h-12 bg-white/10 rounded-lg border border-white/10 flex items-center justify-center text-[10px] font-semibold text-gray-200">
+                  Instant Pay
+                </div>
+              </div>
             </div>
+          )}
+
+          {/* Bottom tag bar */}
+          <div className="flex items-center justify-between text-[10px] text-gray-300 border-t border-white/10 pt-1.5 z-10">
+            <span className="text-amber-300 font-semibold">Web & Concierge Portal</span>
+            <span className="text-emerald-400 font-bold">Full-Stack Live</span>
           </div>
-          <div className="h-6 bg-[#080A24] rounded-lg text-white text-[10px] font-semibold flex items-center justify-center">
-            Shop Now →
-          </div>
+
+          {/* Background glow */}
+          <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-amber-500/15 rounded-full blur-xl pointer-events-none" />
         </div>
       ),
     },
@@ -316,12 +398,14 @@ export default function RecentWork() {
               <div
                 key={idx}
                 onClick={() => {
-                  if (isInteractive) {
+                  if (item.targetProject) {
+                    openMobileCaseStudy(item.targetProject);
+                  } else if (isInteractive) {
                     openMobileCaseStudy(getTargetProject());
                   }
                 }}
                 className={`group bg-[#FAFBFE] hover:bg-white rounded-3xl p-5 sm:p-6 border border-[#EDEFF6] hover:border-purple-200 shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_36px_rgba(91,61,245,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between ${
-                  isInteractive ? 'cursor-pointer ring-1 ring-purple-100/60' : ''
+                  (isInteractive || item.targetProject) ? 'cursor-pointer ring-1 ring-purple-100/60' : ''
                 }`}
               >
                 <div>
@@ -342,13 +426,16 @@ export default function RecentWork() {
                     </div>
                     <button
                       onClick={(e) => {
-                        if (isInteractive) {
+                        if (item.targetProject) {
+                          e.stopPropagation();
+                          openMobileCaseStudy(item.targetProject);
+                        } else if (isInteractive) {
                           e.stopPropagation();
                           openMobileCaseStudy(getTargetProject());
                         }
                       }}
                       className="w-8 h-8 rounded-full border border-gray-200 group-hover:border-[#5B3DF5] flex items-center justify-center text-gray-400 group-hover:text-[#5B3DF5] transition-all"
-                      title={isInteractive ? 'Explore Mobile Case Studies' : 'View project'}
+                      title={item.targetProject ? 'Explore Website Case Study' : isInteractive ? 'Explore Mobile Case Studies' : 'View project'}
                     >
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                     </button>
@@ -364,7 +451,10 @@ export default function RecentWork() {
                   <span className="font-semibold text-[#5B3DF5]">{item.tag}</span>
                   <button
                     onClick={(e) => {
-                      if (isInteractive) {
+                      if (item.targetProject) {
+                        e.stopPropagation();
+                        openMobileCaseStudy(item.targetProject);
+                      } else if (isInteractive) {
                         e.stopPropagation();
                         openMobileCaseStudy(getTargetProject());
                       }

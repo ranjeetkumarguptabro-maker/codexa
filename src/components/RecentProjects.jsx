@@ -6,7 +6,7 @@ export default function RecentProjects() {
   const projects = [
     {
       title: 'SaaS Dashboard',
-      category: 'Web Application',
+      category: 'Website',
       status: 'In Progress 70%',
       percentage: 70,
       icon: LayoutTemplate,
