@@ -5,9 +5,10 @@ import CaseStudyModal from './CaseStudyModal.jsx';
 export default function RecentWork() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalProject, setModalProject] = useState('kangaroo');
-  const [featuredMobileIndex, setFeaturedMobileIndex] = useState(0); // 0: Kangaroo, 1: Blind AI, 2: SpendSense
+  const [featuredMobileIndex, setFeaturedMobileIndex] = useState(0); // 0: Kangaroo, 1: Blind AI, 2: SpendSense, 3: Planitory
 
   const getTargetProject = () => {
+    if (featuredMobileIndex === 3) return 'planitory';
     if (featuredMobileIndex === 2) return 'spendsense';
     if (featuredMobileIndex === 1) return 'blind-ai';
     return 'kangaroo';
@@ -105,13 +106,13 @@ export default function RecentWork() {
       category: 'iOS & Android',
       icon: Smartphone,
       iconBg: 'bg-blue-100 text-blue-600',
-      tag: '3 Live Products',
+      tag: '4 Live Products',
       isClickable: true,
       preview: (
         <div className="w-full h-44 bg-gradient-to-br from-[#0B0F2A] via-[#1A183D] to-[#111827] rounded-xl overflow-hidden relative text-white flex flex-col justify-between p-3 border border-purple-500/30 group-hover:border-[#5B3DF5] transition-all shadow-inner">
           {/* Project Switcher mini tabs */}
           <div className="flex items-center justify-between z-10">
-            <div className="flex items-center gap-1 bg-black/40 backdrop-blur-md p-0.5 rounded-lg border border-white/10 text-[10px]">
+            <div className="flex items-center gap-1 bg-black/40 backdrop-blur-md p-0.5 rounded-lg border border-white/10 text-[9px]">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -150,6 +151,19 @@ export default function RecentWork() {
                 }`}
               >
                 SpendSense
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFeaturedMobileIndex(3);
+                }}
+                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                  featuredMobileIndex === 3
+                    ? 'bg-indigo-600 text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Planitory
               </button>
             </div>
 
@@ -211,7 +225,7 @@ export default function RecentWork() {
                 </div>
               </div>
             </div>
-          ) : (
+          ) : featuredMobileIndex === 2 ? (
             /* SpendSense Preview */
             <div className="flex items-center gap-3 my-auto z-10">
               <div className="w-12 h-18 rounded-lg overflow-hidden border border-white/20 shadow-md shrink-0 bg-black">
@@ -232,6 +246,32 @@ export default function RecentWork() {
                   250k+ Savers • Voice & OCR
                 </p>
                 <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-emerald-600/90 px-2 py-0.5 rounded mt-1">
+                  <span>Explore Case Study</span>
+                  <ArrowRight className="w-2.5 h-2.5" />
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* Planitory Preview */
+            <div className="flex items-center gap-3 my-auto z-10">
+              <div className="w-12 h-18 rounded-lg overflow-hidden border border-white/20 shadow-md shrink-0 bg-black">
+                <img
+                  src="/assets/Planitory Travel App Mockup.png"
+                  alt="Planitory App"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[11px] font-bold text-white leading-tight">
+                  Planitory App
+                </p>
+                <p className="text-[10px] text-indigo-300 font-medium">
+                  Travel & Curated Maps
+                </p>
+                <p className="text-[9px] text-gray-300">
+                  50k+ Maps • Offline GPS
+                </p>
+                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-indigo-600/90 px-2 py-0.5 rounded mt-1">
                   <span>Explore Case Study</span>
                   <ArrowRight className="w-2.5 h-2.5" />
                 </div>

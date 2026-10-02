@@ -19,6 +19,7 @@ Codexa is a modern, high-performance website and digital agency platform built f
   - **Kangaroo Wellbeing & Learning App**: Complete 4-slide interactive showcase modal with architecture flowcharts and mobile UX walkthroughs.
   - **Blind AI Voice & Navigation Assistant**: Accessible AI-assisted camera navigation with audio guidance and screen breakdowns.
   - **SpendSense AI Personal Finance Companion**: End-to-end 15-step financial growth journey, conversational AI companion, and 10-screen UI breakdown.
+  - **Planitory Travel & Curated Maps App**: Personalized creator map guides, 10-screen master architecture suite, offline vector GPS, and Stripe micro-transactions.
 - **Simple & Transparent Pricing**:
   - Personal & Business Landing Pages (₹8,000)
   - Small Business Website (₹40,000) — *Most Popular*
