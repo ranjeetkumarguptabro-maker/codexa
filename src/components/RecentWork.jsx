@@ -5,7 +5,13 @@ import CaseStudyModal from './CaseStudyModal.jsx';
 export default function RecentWork() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalProject, setModalProject] = useState('kangaroo');
-  const [featuredMobileIndex, setFeaturedMobileIndex] = useState(0); // 0: Kangaroo, 1: Blind AI
+  const [featuredMobileIndex, setFeaturedMobileIndex] = useState(0); // 0: Kangaroo, 1: Blind AI, 2: SpendSense
+
+  const getTargetProject = () => {
+    if (featuredMobileIndex === 2) return 'spendsense';
+    if (featuredMobileIndex === 1) return 'blind-ai';
+    return 'kangaroo';
+  };
 
   const openMobileCaseStudy = (projectId = 'kangaroo', view = 'project') => {
     setModalProject(projectId);
@@ -99,7 +105,7 @@ export default function RecentWork() {
       category: 'iOS & Android',
       icon: Smartphone,
       iconBg: 'bg-blue-100 text-blue-600',
-      tag: '2 Live Products',
+      tag: '3 Live Products',
       isClickable: true,
       preview: (
         <div className="w-full h-44 bg-gradient-to-br from-[#0B0F2A] via-[#1A183D] to-[#111827] rounded-xl overflow-hidden relative text-white flex flex-col justify-between p-3 border border-purple-500/30 group-hover:border-[#5B3DF5] transition-all shadow-inner">
@@ -111,7 +117,7 @@ export default function RecentWork() {
                   e.stopPropagation();
                   setFeaturedMobileIndex(0);
                 }}
-                className={`px-2 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
                   featuredMobileIndex === 0
                     ? 'bg-[#5B3DF5] text-white'
                     : 'text-gray-400 hover:text-white'
@@ -124,7 +130,7 @@ export default function RecentWork() {
                   e.stopPropagation();
                   setFeaturedMobileIndex(1);
                 }}
-                className={`px-2 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
                   featuredMobileIndex === 1
                     ? 'bg-amber-500 text-white'
                     : 'text-gray-400 hover:text-white'
@@ -132,9 +138,22 @@ export default function RecentWork() {
               >
                 Blind AI
               </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFeaturedMobileIndex(2);
+                }}
+                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                  featuredMobileIndex === 2
+                    ? 'bg-emerald-600 text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                SpendSense
+              </button>
             </div>
 
-            <span className="text-amber-400 font-bold text-[10px] bg-amber-400/20 px-2 py-0.5 rounded-full border border-amber-400/30">
+            <span className="text-amber-400 font-bold text-[10px] bg-amber-400/20 px-1.5 py-0.5 rounded-full border border-amber-400/30">
               ★ 4.9+
             </span>
           </div>
@@ -166,7 +185,7 @@ export default function RecentWork() {
                 </div>
               </div>
             </div>
-          ) : (
+          ) : featuredMobileIndex === 1 ? (
             /* Blind AI Preview */
             <div className="flex items-center gap-3 my-auto z-10">
               <div className="w-12 h-18 rounded-lg overflow-hidden border border-white/20 shadow-md shrink-0 bg-black">
@@ -187,6 +206,32 @@ export default function RecentWork() {
                   Powered by Gemini • LiDAR AR
                 </p>
                 <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-amber-500/90 px-2 py-0.5 rounded mt-1">
+                  <span>Explore Case Study</span>
+                  <ArrowRight className="w-2.5 h-2.5" />
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* SpendSense Preview */
+            <div className="flex items-center gap-3 my-auto z-10">
+              <div className="w-12 h-18 rounded-lg overflow-hidden border border-white/20 shadow-md shrink-0 bg-black">
+                <img
+                  src="/assets/SpendSense AI Finance Assistant.png"
+                  alt="SpendSense App"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[11px] font-bold text-white leading-tight">
+                  SpendSense AI
+                </p>
+                <p className="text-[10px] text-emerald-300 font-medium">
+                  Personal Finance & Wealth
+                </p>
+                <p className="text-[9px] text-gray-300">
+                  250k+ Savers • Voice & OCR
+                </p>
+                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-emerald-600/90 px-2 py-0.5 rounded mt-1">
                   <span>Explore Case Study</span>
                   <ArrowRight className="w-2.5 h-2.5" />
                 </div>
@@ -232,8 +277,7 @@ export default function RecentWork() {
                 key={idx}
                 onClick={() => {
                   if (isInteractive) {
-                    const targetProj = featuredMobileIndex === 1 ? 'blind-ai' : 'kangaroo';
-                    openMobileCaseStudy(targetProj);
+                    openMobileCaseStudy(getTargetProject());
                   }
                 }}
                 className={`group bg-[#FAFBFE] hover:bg-white rounded-3xl p-5 sm:p-6 border border-[#EDEFF6] hover:border-purple-200 shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_36px_rgba(91,61,245,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between ${
@@ -260,8 +304,7 @@ export default function RecentWork() {
                       onClick={(e) => {
                         if (isInteractive) {
                           e.stopPropagation();
-                          const targetProj = featuredMobileIndex === 1 ? 'blind-ai' : 'kangaroo';
-                          openMobileCaseStudy(targetProj);
+                          openMobileCaseStudy(getTargetProject());
                         }
                       }}
                       className="w-8 h-8 rounded-full border border-gray-200 group-hover:border-[#5B3DF5] flex items-center justify-center text-gray-400 group-hover:text-[#5B3DF5] transition-all"
@@ -283,8 +326,7 @@ export default function RecentWork() {
                     onClick={(e) => {
                       if (isInteractive) {
                         e.stopPropagation();
-                        const targetProj = featuredMobileIndex === 1 ? 'blind-ai' : 'kangaroo';
-                        openMobileCaseStudy(targetProj);
+                        openMobileCaseStudy(getTargetProject());
                       }
                     }}
                     className="flex items-center gap-1 text-gray-400 group-hover:text-[#5B3DF5] font-semibold transition-colors cursor-pointer"
@@ -299,7 +341,7 @@ export default function RecentWork() {
         </div>
       </div>
 
-      {/* Case Study & Multi-Project Modal (Featuring Kangaroo & Blind AI) */}
+      {/* Case Study & Multi-Project Modal (Featuring Kangaroo, Blind AI, and SpendSense) */}
       <CaseStudyModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
