@@ -358,12 +358,21 @@ export default function CaseStudyModal({
       ],
       gallery: [
         {
+          src: '/assets/Norvique Sunset Villa Hero.png',
+          title: 'Norvique Official Cover Page & Sunset Villa Hero Experience',
+          description:
+            'Official flagship cover page: Exceptional Properties headline, sunset coastal infinity pool villa, 500+ premium properties, 25+ exclusive locations, 98% satisfaction rating, and video tour trigger.',
+          stepBadge: '01 • Official Cover & Hero Experience',
+          isVideo: false,
+          isDiagram: false,
+        },
+        {
           src: '/assets/Norvique Website Walkthrough.mp4',
           poster: '/assets/Norvique Video Poster.png',
           title: 'Norvique Live Website Video Walkthrough (Full Tour)',
           description:
             'Full 49-second recording of the live Norvique luxury website: dynamic hero video, Buy • Sell • Rent, futuristic architectural villas, 3D client review deck, and luxury concierge.',
-          stepBadge: '01 • Live Video Tour',
+          stepBadge: '02 • Live Video Tour',
           isVideo: true,
           isDiagram: false,
         },
@@ -372,7 +381,7 @@ export default function CaseStudyModal({
           title: 'Norvique 8-Step Complete Website User Flow & Architecture',
           description:
             'Complete user journey mapping from discovery to inquiry/booking: Landing & Entry, Search & Explore, Property Details, Enquiry/Contact, List Your Property (For Sellers), Concierge Contact, and User Accounts.',
-          stepBadge: '02 • User Flow & UX Architecture',
+          stepBadge: '03 • User Flow & UX Architecture',
           isVideo: false,
           isDiagram: true,
         },
@@ -381,7 +390,7 @@ export default function CaseStudyModal({
           title: 'Norvique Luxury Property Showcase Master Suite',
           description:
             'Full portfolio showcase composite: Solis Pavilion, Buy/Sell/Rent portal, Futuristic Homes upcoming, client reviews deck, 3D architectural model in hand, and Exclusive Living.',
-          stepBadge: '03 • Showcase Master Suite',
+          stepBadge: '04 • Showcase Master Suite',
           isVideo: false,
           isDiagram: false,
         },
@@ -390,7 +399,7 @@ export default function CaseStudyModal({
           title: 'Futuristic Living — Upcoming Architectural Masterpieces',
           description:
             'Ultra-modern biophilic and organic cantilevered luxury villas with infinity pools and private sea access in Jurmala, Latvia.',
-          stepBadge: '04 • Future Living Collection',
+          stepBadge: '05 • Future Living Collection',
           isVideo: false,
           isDiagram: false,
         },
@@ -399,7 +408,7 @@ export default function CaseStudyModal({
           title: 'Interactive 3D Client Reviews Carousel Deck',
           description:
             '3D stacked review cards with verified buyer ratings (James Peterson 5.0, Christopher Hall, Alexander Moore) and smooth card navigation.',
-          stepBadge: '05 • Client Testimonials & Trust',
+          stepBadge: '06 • Client Testimonials & Trust',
           isVideo: false,
           isDiagram: false,
         },
@@ -472,8 +481,8 @@ export default function CaseStudyModal({
       tag: 'Featured Luxury Website',
       badgeBg: 'bg-stone-900 text-amber-300',
       rating: '5.0 ★ (Awwwards Nominee)',
-      desc: 'Discover Latvia’s most exceptional villas. Cinematic 49s video walkthrough, 8-step user journey flow, 3D client reviews, and concierge booking.',
-      image: '/assets/Norvique Video Poster.png',
+      desc: 'Discover Latvia’s most exceptional villas. Flagship sunset cover page, 49s video walkthrough, 8-step user journey flow, 3D client reviews, and concierge booking.',
+      image: '/assets/Norvique Sunset Villa Hero.png',
       active: true,
     },
     {
