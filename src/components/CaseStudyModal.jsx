@@ -17,7 +17,9 @@ import {
   RotateCcw,
   Eye,
   Navigation,
-  QrCode
+  QrCode,
+  TrendingUp,
+  Wallet
 } from 'lucide-react';
 
 export default function CaseStudyModal({
@@ -196,6 +198,74 @@ export default function CaseStudyModal({
         },
       ],
     },
+    spendsense: {
+      id: 'spendsense',
+      name: 'SpendSense — AI Personal Finance Companion',
+      category: 'iOS & Android (Fintech & AI)',
+      tag: 'Featured Fintech',
+      badgeColor: 'bg-emerald-600 text-white',
+      rating: '4.9 ★ (Fintech Innovation Award)',
+      headline: 'Track today. Invest in tomorrow — Turn everyday spending into a brighter future.',
+      description:
+        'An intelligent personal finance companion engineered by Codexa. Combines AI receipt scanning, real-time merchant insights, automated budget categorization, retirement compound calculators, and gamified financial learning.',
+      stats: [
+        { label: 'Active Savers', value: '250,000+' },
+        { label: 'AI Assistant', value: 'Voice & OCR' },
+        { label: 'Savings Growth', value: '+34% MoM' },
+      ],
+      engineering: [
+        'React Native cross-platform code base with 60 FPS gesture physics',
+        'Camera OCR receipt scanning with instant merchant & item parsing',
+        'End-to-end encrypted financial data sync with real-time budget ledger',
+      ],
+      design: [
+        'Delightful plant mascot design system symbolizing financial growth & health',
+        'Conversational AI voice companion UI with voice prompt shortcuts',
+        'Long-term future impact slider visualizing compound retirement growth',
+      ],
+      gallery: [
+        {
+          src: '/assets/SpendSense Finance App Showcase.png',
+          title: 'SpendSense Finance App Showcase (5-Device Suite)',
+          description:
+            'Core 5-device flagship showcase: Home Dashboard ("Small choices, bigger future"), Monthly Insights breakdown, SpendSense AI voice companion, Nearby Merchants map, and 10-Year Future Impact retirement calculator.',
+          stepBadge: '01 • Core Platform Overview',
+          isDiagram: false,
+        },
+        {
+          src: '/assets/SpendSense App Workflow Journey.png',
+          title: 'SpendSense 15-Step End-to-End User Journey Workflow (Ultra HD)',
+          description:
+            'Comprehensive user lifecycle: 1) Onboarding → 2) Profile Setup → 3) Set Goals → 4) Home Dashboard → 5) Add Transaction (Scan Receipt) → 6) Categorize → 7) Budget Tracking → 8) Merchant Details → 9) Analytics → 10) Smart Insights → 11) Learn & Earn → 12) Community → 13) Goal Progress → 14) Smart Alerts → 15) Long-Term Impact.',
+          stepBadge: '02 • Complete 15-Step User Journey (Ultra HD)',
+          isDiagram: true,
+        },
+        {
+          src: '/assets/SpendSense AI Finance Assistant.png',
+          title: 'SpendSense Conversational AI Assistant',
+          description:
+            'Flagship iPhone 15 Pro hero showcase featuring the interactive green sprout robot assistant: "How can I help you today? Track a purchase • Show my spending • Set a savings goal • Teach me • Tap to speak".',
+          stepBadge: '03 • Conversational AI Engine',
+          isDiagram: false,
+        },
+        {
+          src: '/assets/SpendSense App Workflow Infographic.png',
+          title: 'SpendSense App Workflow & Architecture Infographic',
+          description:
+            '10-phase modular architecture connecting receipt scanning, AI spending suggestions, merchant intelligence, community leaderboard, and continuous guidance.',
+          stepBadge: '04 • System Architecture',
+          isDiagram: true,
+        },
+        {
+          src: '/assets/Fintech Learning App Screen Collection.png',
+          title: 'SpendSense Fintech & Community UI Collage (10 Screens)',
+          description:
+            'Deep dive into 10 specialized app screens: Retirement Income Gap simulator, Family Security, Learn & Earn micro-lessons, Community (€2.4M saved together), Merchant geofencing, and Quick Actions.',
+          stepBadge: '05 • Comprehensive 10-Screen Suite',
+          isDiagram: false,
+        },
+      ],
+    },
   };
 
   const currentProject = projectsData[selectedProjectId] || projectsData.kangaroo;
@@ -235,23 +305,22 @@ export default function CaseStudyModal({
       active: true,
     },
     {
-      id: 'apex-wealth',
-      name: 'Apex Wealth & Mobile Banking',
-      category: 'iOS & Android',
-      tag: 'Fintech & DeFi',
-      badgeBg: 'bg-blue-600 text-white',
-      rating: '5.0 ★ (Beta)',
-      desc: 'Smart card controls, AI-driven portfolio rebalancing, instant cross-border transfers with biometric multi-sig security.',
-      image: null,
-      active: false,
-      status: 'Coming Soon',
+      id: 'spendsense',
+      name: 'SpendSense — AI Personal Finance Companion',
+      category: 'iOS & Android (Fintech & AI)',
+      tag: 'Featured Fintech',
+      badgeBg: 'bg-emerald-600 text-white',
+      rating: '4.9 ★ (Fintech Innovation Award)',
+      desc: 'Turn everyday spending into a brighter future. AI receipt scanning, merchant insights, retirement compound calculators, and gamified financial learning.',
+      image: '/assets/SpendSense AI Finance Assistant.png',
+      active: true,
     },
     {
       id: 'health-pulse',
       name: 'HealthPulse Telemedicine & IoT',
       category: 'Healthcare Mobile',
       tag: 'Health & Diagnostics',
-      badgeBg: 'bg-emerald-600 text-white',
+      badgeBg: 'bg-blue-600 text-white',
       rating: 'In Clinical Testing',
       desc: 'Real-time patient telemetry, Apple HealthKit / Google Health Connect sync, and secure HD video consultation.',
       image: null,
@@ -390,6 +459,23 @@ export default function CaseStudyModal({
               <span>Blind AI</span>
               <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">Gemini AI</span>
             </button>
+
+            {/* SpendSense Quick Tab */}
+            <button
+              onClick={() => {
+                setSelectedProjectId('spendsense');
+                setView('project');
+              }}
+              className={`flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
+                view === 'project' && selectedProjectId === 'spendsense'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-gray-600 hover:text-emerald-600 hover:bg-emerald-50'
+              }`}
+            >
+              <TrendingUp className="w-3.5 h-3.5" />
+              <span>SpendSense</span>
+              <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">Fintech AI</span>
+            </button>
           </div>
 
           {/* Right section: Close button */}
@@ -413,7 +499,9 @@ export default function CaseStudyModal({
               
               {/* Hero Banner Header */}
               <div className={`p-6 sm:p-8 rounded-3xl border shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-6 ${
-                selectedProjectId === 'blind-ai'
+                selectedProjectId === 'spendsense'
+                  ? 'bg-gradient-to-br from-emerald-50 via-white to-teal-50/50 border-emerald-200/70'
+                  : selectedProjectId === 'blind-ai'
                   ? 'bg-gradient-to-br from-amber-50 via-white to-orange-50/50 border-amber-200/70'
                   : 'bg-gradient-to-br from-purple-50 via-white to-blue-50/40 border-purple-100/80'
               }`}>
@@ -477,7 +565,9 @@ export default function CaseStudyModal({
                     <h3 className="text-lg font-bold text-[#080A24] font-['Plus_Jakarta_Sans'] flex items-center gap-2">
                       <span>Project Showcase Gallery</span>
                       <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${
-                        selectedProjectId === 'blind-ai'
+                        selectedProjectId === 'spendsense'
+                          ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
+                          : selectedProjectId === 'blind-ai'
                           ? 'text-amber-700 bg-amber-50 border-amber-200'
                           : 'text-[#5B3DF5] bg-purple-50 border-purple-200'
                       }`}>
@@ -565,8 +655,8 @@ export default function CaseStudyModal({
                   </div>
                 </div>
 
-                {/* 4 Clickable Thumbnails to Jump Directly */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-1">
+                {/* Clickable Thumbnails to Jump Directly */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-3 pt-1">
                   {galleryImages.map((img, idx) => {
                     const isSelected = activeImageIndex === idx;
                     return (
@@ -575,7 +665,9 @@ export default function CaseStudyModal({
                         onClick={() => setActiveImageIndex(idx)}
                         className={`group p-2 rounded-2xl border text-left transition-all cursor-pointer ${
                           isSelected
-                            ? selectedProjectId === 'blind-ai'
+                            ? selectedProjectId === 'spendsense'
+                              ? 'bg-emerald-50/80 border-emerald-500 ring-2 ring-emerald-500/30 shadow-sm'
+                              : selectedProjectId === 'blind-ai'
                               ? 'bg-amber-50/80 border-amber-500 ring-2 ring-amber-500/30 shadow-sm'
                               : 'bg-purple-50/80 border-[#5B3DF5] ring-2 ring-[#5B3DF5]/30 shadow-sm'
                             : 'bg-white border-gray-200 hover:border-gray-300'
@@ -595,7 +687,9 @@ export default function CaseStudyModal({
                         </div>
                         <p className={`text-[11px] font-bold truncate ${
                           isSelected
-                            ? selectedProjectId === 'blind-ai'
+                            ? selectedProjectId === 'spendsense'
+                              ? 'text-emerald-700'
+                              : selectedProjectId === 'blind-ai'
                               ? 'text-amber-700'
                               : 'text-[#5B3DF5]'
                             : 'text-gray-800'
@@ -611,13 +705,13 @@ export default function CaseStudyModal({
                 </div>
               </div>
 
-              {/* Continuous Horizontal Scroll Strip (All 4 side by side) */}
+              {/* Continuous Horizontal Scroll Strip */}
               <div className="pt-4 border-t border-gray-100">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-sm font-bold text-[#080A24] font-['Plus_Jakarta_Sans'] flex items-center gap-2">
                     <span>Continuous Gallery Filmstrip</span>
                     <span className="text-[11px] font-normal text-gray-400">
-                      (Swipe or scroll horizontally through all 4 views)
+                      (Swipe or scroll horizontally through all gallery views)
                     </span>
                   </h4>
                 </div>
@@ -655,7 +749,11 @@ export default function CaseStudyModal({
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-gray-100">
                 <div className="p-4 bg-white rounded-2xl border border-gray-200">
                   <h5 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5 ${
-                    selectedProjectId === 'blind-ai' ? 'text-amber-600' : 'text-[#5B3DF5]'
+                    selectedProjectId === 'spendsense'
+                      ? 'text-emerald-600'
+                      : selectedProjectId === 'blind-ai'
+                      ? 'text-amber-600'
+                      : 'text-[#5B3DF5]'
                   }`}>
                     <Layers className="w-3.5 h-3.5" />
                     Engineering
@@ -672,7 +770,11 @@ export default function CaseStudyModal({
 
                 <div className="p-4 bg-white rounded-2xl border border-gray-200">
                   <h5 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5 ${
-                    selectedProjectId === 'blind-ai' ? 'text-amber-600' : 'text-[#5B3DF5]'
+                    selectedProjectId === 'spendsense'
+                      ? 'text-emerald-600'
+                      : selectedProjectId === 'blind-ai'
+                      ? 'text-amber-600'
+                      : 'text-[#5B3DF5]'
                   }`}>
                     <GitBranch className="w-3.5 h-3.5" />
                     Architecture & Design
@@ -690,7 +792,11 @@ export default function CaseStudyModal({
                 <div className="p-4 bg-white rounded-2xl border border-gray-200 flex flex-col justify-between">
                   <div>
                     <h5 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5 ${
-                      selectedProjectId === 'blind-ai' ? 'text-amber-600' : 'text-[#5B3DF5]'
+                      selectedProjectId === 'spendsense'
+                        ? 'text-emerald-600'
+                        : selectedProjectId === 'blind-ai'
+                        ? 'text-amber-600'
+                        : 'text-[#5B3DF5]'
                     }`}>
                       <Sparkles className="w-3.5 h-3.5" />
                       Build Your Mobile App
@@ -703,7 +809,9 @@ export default function CaseStudyModal({
                     href="mailto:ranjeetserious8@gmail.com"
                     onClick={onClose}
                     className={`mt-3 inline-flex items-center justify-center gap-1.5 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-all cursor-pointer ${
-                      selectedProjectId === 'blind-ai'
+                      selectedProjectId === 'spendsense'
+                        ? 'bg-emerald-600 hover:bg-emerald-700'
+                        : selectedProjectId === 'blind-ai'
                         ? 'bg-amber-500 hover:bg-amber-600'
                         : 'bg-[#5B3DF5] hover:bg-[#4D30E2]'
                     }`}
