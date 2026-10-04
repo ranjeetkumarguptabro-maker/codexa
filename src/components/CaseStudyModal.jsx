@@ -24,7 +24,9 @@ import {
   Compass,
   Globe,
   Play,
-  Building2
+  Building2,
+  Bot,
+  Briefcase
 } from 'lucide-react';
 
 export default function CaseStudyModal({
@@ -414,6 +416,71 @@ export default function CaseStudyModal({
         },
       ],
     },
+    'career-go': {
+      id: 'career-go',
+      name: 'Career GO — AI Career & Recruitment Assistant Platform',
+      category: 'Web App & Autonomous AI Agent',
+      tag: 'Featured AI Platform',
+      badgeColor: 'bg-purple-700 text-white',
+      rating: '4.9 ★ (AI Product of the Year)',
+      headline: 'Autonomous Career Co-Pilot: Semantic Job Matching, Resume Optimization & Recruiter Negotiation',
+      description:
+        'A comprehensive AI-driven talent and recruitment ecosystem engineered by Codexa. Combines real-time vacancy aggregation across 46,344+ listings, 92% semantic vector job matching, smart resume builder with ATS scoring (50-80%), deadline alert workflows, and an intelligent recruiter chat co-pilot with automated technical evaluations.',
+      stats: [
+        { label: 'Active Vacancies', value: '46,344+' },
+        { label: 'AI Match Rate', value: '92% Precision' },
+        { label: 'Co-Pilot Engine', value: 'Gemini + Vector' },
+      ],
+      engineering: [
+        'Multi-model LLM embeddings for semantic candidate-to-vacancy precision matching',
+        'Real-time WebSocket chat co-pilot with automated technical test generation (60 mins)',
+        'Dynamic ATS resume section parser with live completion scoring (50-80%)',
+        'Cross-platform responsive design tested for Tablet, Apple Studio Display, and MacBook Pro',
+      ],
+      design: [
+        'Clean high-contrast lavender and violet theme with dedicated "+ AI Assistant" action button',
+        'Multi-stage response pipeline: Offers, Under Review, Chat Negotiations, Interview, Approved',
+        'Unified employer dashboard with deadline urgency tags and verified badge markers',
+      ],
+      gallery: [
+        {
+          src: '/assets/Career GO AI Dashboard Tablet.png',
+          title: 'Career GO Application Analytics & Dashboard (Tablet)',
+          description:
+            'Central applicant command center: Application Analytics for January 2026, 30 submitted applications tracking (+12 sent to employer), urgent deadline reminders (Frontend Developer at BrightTech Solutions), resume completion gauge (50-80%), and AI recommendation feed.',
+          stepBadge: '01 • Analytics & Application Funnel',
+          isVideo: false,
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Career GO AI Job Search Monitor.png',
+          title: 'Career GO Semantic Job Search Engine (Studio Display)',
+          description:
+            'High-volume search platform displaying 46,344 live tech vacancies: Perfect 92% AI match indicator, Senior Frontend Developer (200k-300k P/month), Product Designer (UX/UI), Verified Employer badges, and 1-click AI instant apply.',
+          stepBadge: '02 • 46,344+ Vacancies & AI Matching',
+          isVideo: false,
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Career GO AI Resume Builder Laptop.png',
+          title: 'Career GO AI Resume Architect & Section Optimizer (MacBook Pro)',
+          description:
+            'Interactive resume creation studio: Progress completion indicator (50-80%), instant 825Kb document parser, automated category classification, and generative AI experience summary tailoring for Senior Frontend roles.',
+          stepBadge: '03 • AI Resume Builder & ATS Scorer',
+          isVideo: false,
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Career GO AI Recruiter Chats Laptop.png',
+          title: 'Career GO Recruiter Chats & AI Negotiation Co-Pilot (MacBook Pro)',
+          description:
+            'Live recruiter conversation interface featuring multi-company chat threads (BrightTech Solutions, Nova Digital Studio, CloudCore Systems), built-in 5-task 60-minute technical evaluation assessments, and compensation negotiation assistant.',
+          stepBadge: '04 • Recruiter AI Chat Co-Pilot',
+          isVideo: false,
+          isDiagram: false,
+        },
+      ],
+    },
   };
 
   const currentProject = projectsData[selectedProjectId] || projectsData.kangaroo;
@@ -483,6 +550,17 @@ export default function CaseStudyModal({
       rating: '5.0 ★ (Awwwards Nominee)',
       desc: 'Discover Latvia’s most exceptional villas. Flagship sunset cover page, 49s video walkthrough, 8-step user journey flow, 3D client reviews, and concierge booking.',
       image: '/assets/Norvique Sunset Villa Hero.png',
+      active: true,
+    },
+    {
+      id: 'career-go',
+      name: 'Career GO — AI Career & Recruitment Platform',
+      category: 'Web App & AI Agent Platform',
+      tag: 'Featured AI Platform',
+      badgeBg: 'bg-purple-700 text-white',
+      rating: '4.9 ★ (AI Product of the Year)',
+      desc: 'Autonomous career co-pilot. Semantic job matching across 46k+ vacancies, dynamic ATS resume builder, deadline tracking, and recruiter chat assistant.',
+      image: '/assets/Career GO AI Dashboard Tablet.png',
       active: true,
     },
     {
@@ -690,6 +768,23 @@ export default function CaseStudyModal({
               <Globe className="w-3.5 h-3.5 text-amber-500" />
               <span>Norvique</span>
               <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1.5 py-0.2 rounded-full">Luxury Website</span>
+            </button>
+
+            {/* Career GO Quick Tab */}
+            <button
+              onClick={() => {
+                setSelectedProjectId('career-go');
+                setView('project');
+              }}
+              className={`flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
+                view === 'project' && selectedProjectId === 'career-go'
+                  ? 'bg-purple-700 text-white shadow-xs'
+                  : 'text-gray-600 hover:text-purple-700 hover:bg-purple-50'
+              }`}
+            >
+              <Bot className="w-3.5 h-3.5 text-purple-300" />
+              <span>Career GO</span>
+              <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">AI Assistant</span>
             </button>
           </div>
 
