@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
-import { ArrowRight, LayoutTemplate, ShoppingBag, Bot, Smartphone, Eye, Sparkles, Globe, Play } from 'lucide-react';
+import {
+  ArrowRight,
+  LayoutTemplate,
+  ShoppingBag,
+  Bot,
+  Smartphone,
+  Sparkles,
+  Play
+} from 'lucide-react';
 import CaseStudyModal from './CaseStudyModal.jsx';
 
 export default function RecentWork() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalProject, setModalProject] = useState('kangaroo');
-  const [featuredMobileIndex, setFeaturedMobileIndex] = useState(0); // 0: Kangaroo, 1: Blind AI, 2: SpendSense, 3: Planitory
-  const [featuredSaasIndex, setFeaturedSaasIndex] = useState(0); // 0: Norvique, 1: Dashboard
-  const [featuredEcommerceIndex, setFeaturedEcommerceIndex] = useState(0); // 0: Flagship, 1: Product PDP, 2: Foldable
-  const [featuredAiIndex, setFeaturedAiIndex] = useState(0); // 0: Dashboard, 1: Job Match, 2: AI Chats
+  const [modalProject, setModalProject] = useState('norvique');
 
-  const getTargetProject = () => {
-    if (featuredMobileIndex === 3) return 'planitory';
-    if (featuredMobileIndex === 2) return 'spendsense';
-    if (featuredMobileIndex === 1) return 'blind-ai';
-    return 'kangaroo';
-  };
-
-  const openMobileCaseStudy = (projectId = 'kangaroo', view = 'project') => {
+  const openCaseStudy = (projectId = 'norvique') => {
     setModalProject(projectId);
     setModalOpen(true);
   };
@@ -30,125 +27,12 @@ export default function RecentWork() {
       icon: LayoutTemplate,
       iconBg: 'bg-purple-100 text-purple-600',
       tag: 'Live Platform',
-      isClickable: true,
       targetProject: 'norvique',
-      preview: (
-        <div className="w-full h-44 bg-gradient-to-br from-[#12141F] via-[#1A1826] to-[#0A0C14] rounded-xl overflow-hidden relative text-white flex flex-col justify-between p-3 border border-purple-500/30 group-hover:border-purple-400 transition-all shadow-inner">
-          {/* Switcher mini tabs */}
-          <div className="flex items-center justify-between z-10">
-            <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md p-0.5 rounded-lg border border-white/10 text-[9px]">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedSaasIndex(0);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredSaasIndex === 0
-                    ? 'bg-amber-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                Norvique
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedSaasIndex(1);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredSaasIndex === 1
-                    ? 'bg-[#5B3DF5] text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                Dashboard
-              </button>
-            </div>
-
-            {featuredSaasIndex === 0 ? (
-              <span className="text-amber-400 font-bold text-[10px] bg-amber-400/20 px-1.5 py-0.5 rounded-full border border-amber-400/30 flex items-center gap-1">
-                <Play className="w-2.5 h-2.5 fill-current" />
-                49s Tour
-              </span>
-            ) : (
-              <span className="text-emerald-400 font-mono text-[10px] bg-emerald-400/20 px-1.5 py-0.5 rounded-full border border-emerald-400/30">
-                +128% ARR
-              </span>
-            )}
-          </div>
-
-          {featuredSaasIndex === 0 ? (
-            /* Norvique Live Project Preview */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-16 h-20 rounded-lg overflow-hidden border border-amber-400/30 shadow-md shrink-0 bg-black relative">
-                <img
-                  src="/assets/Norvique Sunset Villa Hero.png"
-                  alt="Norvique Luxury Estate Cover"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/25 flex items-center justify-center">
-                  <div className="w-6 h-6 rounded-full bg-white/90 text-black flex items-center justify-center shadow-md">
-                    <Play className="w-3 h-3 fill-current ml-0.5" />
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  Norvique Real Estate
-                </p>
-                <p className="text-[10px] text-amber-300 font-medium">
-                  Curated Luxury Villas • Latvia
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  Cover Page • 49s Tour • 8-Step Flow
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-amber-600/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          ) : (
-            /* SaaS Metrics Preview */
-            <div className="space-y-2 my-auto z-10">
-              <div className="flex items-center justify-between text-xs border-b border-white/10 pb-1.5">
-                <span className="font-semibold text-purple-400">Codexa Metrics</span>
-                <span className="text-emerald-400 font-mono">+128% ARR</span>
-              </div>
-              <div className="space-y-1.5">
-                <div className="h-2 bg-purple-500/40 rounded-full w-4/5" />
-                <div className="h-2 bg-blue-500/30 rounded-full w-2/3" />
-              </div>
-              <div className="flex gap-2 pt-1">
-                <div className="h-7 flex-1 bg-white/5 rounded-lg flex items-center justify-center text-[10px] text-gray-300 border border-white/5">
-                  Analytics
-                </div>
-                <div className="h-7 flex-1 bg-purple-600/40 rounded-lg flex items-center justify-center text-[10px] text-purple-200 border border-purple-500/30">
-                  Active Sync
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Bottom tag bar */}
-          <div className="flex items-center justify-between text-[10px] text-gray-300 border-t border-white/10 pt-1.5 z-10">
-            {featuredSaasIndex === 0 ? (
-              <>
-                <span className="text-amber-300 font-semibold">Web & Concierge Portal</span>
-                <span className="text-emerald-400 font-bold">Full-Stack Live</span>
-              </>
-            ) : (
-              <>
-                <span className="text-purple-300 font-semibold">Codexa Metrics</span>
-                <span className="text-emerald-400 font-bold">100% Uptime</span>
-              </>
-            )}
-          </div>
-
-          {/* Background glow */}
-          <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-purple-500/15 rounded-full blur-xl pointer-events-none" />
-        </div>
-      ),
+      coverImage: '/assets/Norvique Sunset Villa Hero.png',
+      badgeText: 'Sunset Villa • 49s Tour',
+      badgeIcon: Play,
+      projectName: 'Norvique Real Estate',
+      projectDesc: 'Curated Luxury Villas • Latvia',
     },
     {
       id: 'ecommerce',
@@ -157,302 +41,26 @@ export default function RecentWork() {
       icon: ShoppingBag,
       iconBg: 'bg-emerald-100 text-emerald-600',
       tag: 'Under Armour Live',
-      isClickable: true,
       targetProject: 'under-armour',
-      preview: (
-        <div className="w-full h-44 bg-gradient-to-br from-[#0F1117] via-[#1A1D27] to-[#0A0C12] rounded-xl overflow-hidden relative text-white flex flex-col justify-between p-3 border border-emerald-500/30 group-hover:border-emerald-400 transition-all shadow-inner">
-          {/* Switcher mini tabs */}
-          <div className="flex items-center justify-between z-10">
-            <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md p-0.5 rounded-lg border border-white/10 text-[9px]">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedEcommerceIndex(0);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredEcommerceIndex === 0
-                    ? 'bg-emerald-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                Flagship
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedEcommerceIndex(1);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredEcommerceIndex === 1
-                    ? 'bg-rose-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                Product PDP
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedEcommerceIndex(2);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredEcommerceIndex === 2
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                Foldable
-              </button>
-            </div>
-
-            <span className="text-emerald-400 font-bold text-[10px] bg-emerald-500/20 px-1.5 py-0.5 rounded-full border border-emerald-400/30 flex items-center gap-1">
-              <ShoppingBag className="w-2.5 h-2.5 text-emerald-400" />
-              Fast Checkout
-            </span>
-          </div>
-
-          {featuredEcommerceIndex === 0 ? (
-            /* Under Armour Flagship Laptop View */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-16 h-20 rounded-lg overflow-hidden border border-emerald-400/30 shadow-md shrink-0 bg-black relative">
-                <img
-                  src="/assets/Under Armour Ecommerce Flagship Laptop.png"
-                  alt="Under Armour Flagship Laptop"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  Under Armour Flagship
-                </p>
-                <p className="text-[10px] text-emerald-300 font-medium">
-                  BRING THE STAY UNRIVALED
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  Shop Heatgear • Men & Women
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-emerald-600/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          ) : featuredEcommerceIndex === 1 ? (
-            /* Under Armour Product PDP View */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-16 h-20 rounded-lg overflow-hidden border border-rose-400/30 shadow-md shrink-0 bg-white relative">
-                <img
-                  src="/assets/Under Armour Product Detail PDP.png"
-                  alt="Under Armour Product PDP"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  UA Command Warm Up
-                </p>
-                <p className="text-[10px] text-rose-300 font-medium">
-                  $75.00 • 4.8 ★ (7 Reviews)
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  Short / Reg / Tall • Multi-Size
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-rose-600/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          ) : (
-            /* Under Armour Foldable Device View */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-16 h-20 rounded-lg overflow-hidden border border-indigo-400/30 shadow-md shrink-0 bg-black relative">
-                <img
-                  src="/assets/Under Armour Foldable Device Retail.png"
-                  alt="Under Armour Foldable Device"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  Adaptive Foldable Retail
-                </p>
-                <p className="text-[10px] text-indigo-300 font-medium">
-                  Dual-Pane Responsive Layout
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  Instant Cart • Sub-Second Load
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-indigo-600/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Bottom tag bar */}
-          <div className="flex items-center justify-between text-[10px] text-gray-300 border-t border-white/10 pt-1.5 z-10">
-            <span className="text-emerald-300 font-semibold">Under Armour • Flagship</span>
-            <span className="text-emerald-400 font-bold">1-Click Checkout</span>
-          </div>
-
-          {/* Background glow */}
-          <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-emerald-500/20 rounded-full blur-xl pointer-events-none" />
-        </div>
-      ),
+      coverImage: '/assets/Under Armour Bring The Stay Flagship Laptop.png',
+      badgeText: 'Flagship • Adaptive Retail',
+      badgeIcon: ShoppingBag,
+      projectName: 'Under Armour Retail',
+      projectDesc: 'High-Performance Headless Storefront & PDP',
     },
     {
       id: 'ai-assistant',
       title: 'AI Assistant',
       category: 'AI Agent',
       icon: Bot,
-      iconBg: 'bg-indigo-100 text-indigo-600',
-      tag: 'Career GO • 46k+ Jobs',
-      isClickable: true,
+      iconBg: 'bg-purple-100 text-purple-600',
+      tag: 'Career GO • AI Agent',
       targetProject: 'career-go',
-      preview: (
-        <div className="w-full h-44 bg-gradient-to-br from-[#0D0B24] via-[#161338] to-[#0A081C] rounded-xl overflow-hidden relative text-white flex flex-col justify-between p-3 border border-purple-500/30 group-hover:border-purple-400 transition-all shadow-inner">
-          {/* Switcher mini tabs */}
-          <div className="flex items-center justify-between z-10">
-            <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md p-0.5 rounded-lg border border-white/10 text-[9px]">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedAiIndex(0);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredAiIndex === 0
-                    ? 'bg-[#7C3AED] text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                Dashboard
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedAiIndex(1);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredAiIndex === 1
-                    ? 'bg-[#5B3DF5] text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                46k+ Jobs
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedAiIndex(2);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredAiIndex === 2
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                AI Chats
-              </button>
-            </div>
-
-            <span className="text-purple-300 font-bold text-[10px] bg-purple-500/20 px-1.5 py-0.5 rounded-full border border-purple-400/30 flex items-center gap-1">
-              <Sparkles className="w-2.5 h-2.5 text-purple-400 fill-current" />
-              AI Co-Pilot
-            </span>
-          </div>
-
-          {featuredAiIndex === 0 ? (
-            /* Career GO Dashboard View */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-16 h-20 rounded-lg overflow-hidden border border-purple-400/30 shadow-md shrink-0 bg-black relative">
-                <img
-                  src="/assets/Career GO AI Dashboard Tablet.png"
-                  alt="Career GO Tablet Dashboard"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  Career GO Platform
-                </p>
-                <p className="text-[10px] text-purple-300 font-medium">
-                  Analytics & Funnel AI
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  30 Applications • 80% Resume Score
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-purple-600/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          ) : featuredAiIndex === 1 ? (
-            /* Career GO Job Match View */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-16 h-20 rounded-lg overflow-hidden border border-indigo-400/30 shadow-md shrink-0 bg-black relative">
-                <img
-                  src="/assets/Career GO AI Job Search Monitor.png"
-                  alt="Career GO Job Search Monitor"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  Semantic Job Match
-                </p>
-                <p className="text-[10px] text-indigo-300 font-medium">
-                  46,344 Live Tech Vacancies
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  92% Match • Salary Insights
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-[#5B3DF5]/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          ) : (
-            /* Career GO AI Chats View */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-16 h-20 rounded-lg overflow-hidden border border-purple-400/30 shadow-md shrink-0 bg-black relative">
-                <img
-                  src="/assets/Career GO AI Recruiter Chats Laptop.png"
-                  alt="Career GO Recruiter Chats"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  Recruiter Chat Co-Pilot
-                </p>
-                <p className="text-[10px] text-purple-300 font-medium">
-                  Technical Test Assessments
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  BrightTech • Nova • Instant Sync
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-indigo-600/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Bottom tag bar */}
-          <div className="flex items-center justify-between text-[10px] text-gray-300 border-t border-white/10 pt-1.5 z-10">
-            <span className="text-purple-300 font-semibold">Career GO • AI Agent</span>
-            <span className="text-emerald-400 font-bold">46k+ Vacancies</span>
-          </div>
-
-          {/* Background glow */}
-          <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-[#7C3AED]/20 rounded-full blur-xl pointer-events-none" />
-        </div>
-      ),
+      coverImage: '/assets/Career GO AI Resume Builder Laptop.png',
+      badgeText: 'AI Co-Pilot • 46k+ Jobs',
+      badgeIcon: Sparkles,
+      projectName: 'Career GO Platform',
+      projectDesc: 'AI Recruiter & Career Acceleration Co-Pilot',
     },
     {
       id: 'mobile-apps',
@@ -461,202 +69,31 @@ export default function RecentWork() {
       icon: Smartphone,
       iconBg: 'bg-blue-100 text-blue-600',
       tag: '4 Live Products',
-      isClickable: true,
-      preview: (
-        <div className="w-full h-44 bg-gradient-to-br from-[#0B0F2A] via-[#1A183D] to-[#111827] rounded-xl overflow-hidden relative text-white flex flex-col justify-between p-3 border border-purple-500/30 group-hover:border-[#5B3DF5] transition-all shadow-inner">
-          {/* Project Switcher mini tabs */}
-          <div className="flex items-center justify-between z-10">
-            <div className="flex items-center gap-1 bg-black/40 backdrop-blur-md p-0.5 rounded-lg border border-white/10 text-[9px]">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedMobileIndex(0);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredMobileIndex === 0
-                    ? 'bg-[#5B3DF5] text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                Kangaroo
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedMobileIndex(1);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredMobileIndex === 1
-                    ? 'bg-amber-500 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                Blind AI
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedMobileIndex(2);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredMobileIndex === 2
-                    ? 'bg-emerald-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                SpendSense
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFeaturedMobileIndex(3);
-                }}
-                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
-                  featuredMobileIndex === 3
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                Planitory
-              </button>
-            </div>
-
-            <span className="text-amber-400 font-bold text-[10px] bg-amber-400/20 px-1.5 py-0.5 rounded-full border border-amber-400/30">
-              ★ 4.9+
-            </span>
-          </div>
-
-          {/* Dynamic Content based on featuredMobileIndex */}
-          {featuredMobileIndex === 0 ? (
-            /* Kangaroo Preview */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-12 h-18 rounded-lg overflow-hidden border border-white/20 shadow-md shrink-0 bg-black">
-                <img
-                  src="/assets/Kangaroo Learning App Showcase.png"
-                  alt="Kangaroo App"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  Kangaroo App
-                </p>
-                <p className="text-[10px] text-purple-300 font-medium">
-                  Wellbeing & Learning
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  150k+ Active Students • 60 FPS
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-[#5B3DF5]/80 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          ) : featuredMobileIndex === 1 ? (
-            /* Blind AI Preview */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-12 h-18 rounded-lg overflow-hidden border border-white/20 shadow-md shrink-0 bg-black">
-                <img
-                  src="/assets/Blind AI Voice Assistant Mockup.png"
-                  alt="Blind AI App"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  Blind AI App
-                </p>
-                <p className="text-[10px] text-amber-300 font-medium">
-                  Vision & Navigation AI
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  Powered by Gemini • LiDAR AR
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-amber-500/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          ) : featuredMobileIndex === 2 ? (
-            /* SpendSense Preview */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-12 h-18 rounded-lg overflow-hidden border border-white/20 shadow-md shrink-0 bg-black">
-                <img
-                  src="/assets/SpendSense AI Finance Assistant.png"
-                  alt="SpendSense App"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  SpendSense AI
-                </p>
-                <p className="text-[10px] text-emerald-300 font-medium">
-                  Personal Finance & Wealth
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  250k+ Savers • Voice & OCR
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-emerald-600/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          ) : (
-            /* Planitory Preview */
-            <div className="flex items-center gap-3 my-auto z-10">
-              <div className="w-12 h-18 rounded-lg overflow-hidden border border-white/20 shadow-md shrink-0 bg-black">
-                <img
-                  src="/assets/Planitory Travel App Mockup.png"
-                  alt="Planitory App"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-[11px] font-bold text-white leading-tight">
-                  Planitory App
-                </p>
-                <p className="text-[10px] text-indigo-300 font-medium">
-                  Travel & Curated Maps
-                </p>
-                <p className="text-[9px] text-gray-300">
-                  50k+ Maps • Offline GPS
-                </p>
-                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-indigo-600/90 px-2 py-0.5 rounded mt-1">
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Bottom tag bar */}
-          <div className="flex items-center justify-between text-[10px] text-gray-300 border-t border-white/10 pt-1.5 z-10">
-            <span className="text-blue-300 font-semibold">iOS 18 & Android 15</span>
-            <span className="text-emerald-400 font-bold">App Store & Play</span>
-          </div>
-
-          {/* Background glow */}
-          <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-[#5B3DF5]/20 rounded-full blur-xl pointer-events-none" />
-        </div>
-      ),
+      targetProject: 'kangaroo',
+      coverImage: '/assets/Kangaroo Learning App Showcase.png',
+      badgeText: '★ 4.9+ • 4 Live Apps',
+      badgeIcon: Smartphone,
+      projectName: 'Kangaroo & App Suite',
+      projectDesc: 'Kangaroo, Blind AI, SpendSense, Planitory',
     },
   ];
 
   return (
     <section id="work" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#EDE9FE] text-[#5B3DF5] text-xs font-bold shadow-xs">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Featured Portfolio & Client Work</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#080A24] tracking-tight font-['Plus_Jakarta_Sans']">
             Real Projects.{' '}
             <span className="text-[#5B3DF5]">Real Results.</span>
           </h2>
           <p className="text-base sm:text-lg text-[#64748B]">
-            Here are a few of our recent projects.
+            Click any card to explore the full case study, live flows, and architecture inside.
           </p>
         </div>
 
@@ -664,27 +101,19 @@ export default function RecentWork() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((item, idx) => {
             const Icon = item.icon;
-            const isInteractive = item.isClickable;
+            const BadgeIcon = item.badgeIcon || Sparkles;
 
             return (
               <div
                 key={idx}
-                onClick={() => {
-                  if (item.targetProject) {
-                    openMobileCaseStudy(item.targetProject);
-                  } else if (isInteractive) {
-                    openMobileCaseStudy(getTargetProject());
-                  }
-                }}
-                className={`group bg-[#FAFBFE] hover:bg-white rounded-3xl p-5 sm:p-6 border border-[#EDEFF6] hover:border-purple-200 shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_36px_rgba(91,61,245,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between ${
-                  (isInteractive || item.targetProject) ? 'cursor-pointer ring-1 ring-purple-100/60' : ''
-                }`}
+                onClick={() => openCaseStudy(item.targetProject)}
+                className="group bg-[#FAFBFE] hover:bg-white rounded-3xl p-5 sm:p-6 border border-[#EDEFF6] hover:border-purple-200 shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_36px_rgba(91,61,245,0.09)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer ring-1 ring-purple-100/50"
               >
                 <div>
-                  {/* Top Bar with Icon, Title, and Link */}
+                  {/* Top Bar with Icon, Title, Category and Arrow */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.iconBg} shadow-xs`}>
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.iconBg} shadow-xs shrink-0`}>
                         <Icon className="w-5 h-5" />
                       </div>
                       <div>
@@ -697,45 +126,67 @@ export default function RecentWork() {
                       </div>
                     </div>
                     <button
+                      type="button"
                       onClick={(e) => {
-                        if (item.targetProject) {
-                          e.stopPropagation();
-                          openMobileCaseStudy(item.targetProject);
-                        } else if (isInteractive) {
-                          e.stopPropagation();
-                          openMobileCaseStudy(getTargetProject());
-                        }
+                        e.stopPropagation();
+                        openCaseStudy(item.targetProject);
                       }}
-                      className="w-8 h-8 rounded-full border border-gray-200 group-hover:border-[#5B3DF5] flex items-center justify-center text-gray-400 group-hover:text-[#5B3DF5] transition-all"
-                      title={item.targetProject ? 'Explore Website Case Study' : isInteractive ? 'Explore Mobile Case Studies' : 'View project'}
+                      className="w-8 h-8 rounded-full border border-gray-200 group-hover:border-[#5B3DF5] flex items-center justify-center text-gray-400 group-hover:text-[#5B3DF5] transition-all cursor-pointer"
+                      title="Explore Case Study"
                     >
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                     </button>
                   </div>
 
-                  {/* UI Preview Canvas */}
-                  <div className="mt-4 mb-2">
-                    {item.preview}
+                  {/* UI Preview Canvas: High-Resolution Cover Image Container */}
+                  <div className="mt-3 mb-2">
+                    <div className="w-full h-48 sm:h-52 rounded-2xl overflow-hidden relative group/cover cursor-pointer border border-black/5 shadow-inner bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900">
+                      <img
+                        src={item.coverImage}
+                        alt={item.projectName}
+                        className="w-full h-full object-cover object-top group-hover/cover:scale-105 transition-transform duration-500 ease-out"
+                        loading="lazy"
+                      />
+
+                      {/* Gradient Overlay for Text Readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+
+                      {/* Floating Top Badge */}
+                      <div className="absolute top-2.5 left-2.5 z-10">
+                        <div className="bg-black/65 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold text-white border border-white/20 flex items-center gap-1.5 shadow-sm">
+                          <BadgeIcon className="w-3 h-3 text-amber-400 shrink-0" />
+                          <span>{item.badgeText}</span>
+                        </div>
+                      </div>
+
+                      {/* Floating Bottom Project Info */}
+                      <div className="absolute bottom-2.5 left-3 right-3 z-10 text-white">
+                        <h5 className="text-[13px] sm:text-[14px] font-bold leading-tight drop-shadow-sm font-['Plus_Jakarta_Sans']">
+                          {item.projectName}
+                        </h5>
+                        <p className="text-[11px] text-white/85 line-clamp-1 mt-0.5 font-medium">
+                          {item.projectDesc}
+                        </p>
+                      </div>
+
+                      {/* Interactive Hover Action Overlay */}
+                      <div className="absolute inset-0 bg-[#5B3DF5]/30 backdrop-blur-[2px] opacity-0 group-hover/cover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                        <span className="px-3.5 py-2 rounded-full bg-white text-[#080A24] text-xs font-bold shadow-xl flex items-center gap-1.5 transform translate-y-2 group-hover/cover:translate-y-0 transition-transform duration-300">
+                          <span>Explore Case Study</span>
+                          <ArrowRight className="w-3.5 h-3.5 text-[#5B3DF5]" />
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
+                {/* Bottom Footer Tag & CTA Link */}
                 <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
                   <span className="font-semibold text-[#5B3DF5]">{item.tag}</span>
-                  <button
-                    onClick={(e) => {
-                      if (item.targetProject) {
-                        e.stopPropagation();
-                        openMobileCaseStudy(item.targetProject);
-                      } else if (isInteractive) {
-                        e.stopPropagation();
-                        openMobileCaseStudy(getTargetProject());
-                      }
-                    }}
-                    className="flex items-center gap-1 text-gray-400 group-hover:text-[#5B3DF5] font-semibold transition-colors cursor-pointer"
-                  >
+                  <div className="flex items-center gap-1 text-gray-400 group-hover:text-[#5B3DF5] font-semibold transition-colors">
                     <span>Explore case study</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                  </button>
+                  </div>
                 </div>
               </div>
             );
@@ -743,7 +194,7 @@ export default function RecentWork() {
         </div>
       </div>
 
-      {/* Case Study & Multi-Project Modal (Featuring Kangaroo, Blind AI, and SpendSense) */}
+      {/* Case Study & Multi-Project Modal */}
       <CaseStudyModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
