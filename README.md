@@ -20,6 +20,7 @@ Codexa is a modern, high-performance website and digital agency platform built f
   - **Blind AI Voice & Navigation Assistant**: Accessible AI-assisted camera navigation with audio guidance and screen breakdowns.
   - **SpendSense AI Personal Finance Companion**: End-to-end 15-step financial growth journey, conversational AI companion, and 10-screen UI breakdown.
   - **Planitory Travel & Curated Maps App**: Personalized creator map guides, 10-screen master architecture suite, offline vector GPS, and Stripe micro-transactions.
+  - **Norvique Luxury Real Estate Website**: Full 49s video walkthrough tour, 8-step complete website user flow architecture, 3D client review deck, and luxury concierge booking.
 - **Simple & Transparent Pricing**:
   - Personal & Business Landing Pages (₹8,000)
   - Small Business Website (₹40,000) — *Most Popular*

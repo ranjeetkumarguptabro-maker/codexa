@@ -21,7 +21,10 @@ import {
   TrendingUp,
   Wallet,
   MapPin,
-  Compass
+  Compass,
+  Globe,
+  Play,
+  Building2
 } from 'lucide-react';
 
 export default function CaseStudyModal({
@@ -328,6 +331,80 @@ export default function CaseStudyModal({
         },
       ],
     },
+    norvique: {
+      id: 'norvique',
+      name: 'Norvique — Curated Luxury Real Estate Platform',
+      category: 'Website & Digital Experience',
+      tag: 'Featured Luxury Website',
+      badgeColor: 'bg-stone-900 text-amber-300 border border-amber-400/40',
+      rating: '5.0 ★ (Awwwards Nominee)',
+      headline: 'Discover Latvia’s most exceptional villas — Buy • Sell • Rent • Concierge',
+      description:
+        'A bespoke luxury real estate platform designed and engineered by Codexa. Features cinematic video walkthroughs, futuristic architectural villas, 3D interactive client review cards, property inquiry concierge, and a comprehensive 8-step user journey.',
+      stats: [
+        { label: 'Listed Portfolio', value: '€45M+' },
+        { label: 'Walkthrough Tour', value: '49s 60fps' },
+        { label: 'Architecture', value: '8-Step UX Flow' },
+      ],
+      engineering: [
+        'React 19 with GPU-accelerated video rendering & responsive breakpoints',
+        '3D CSS transforms for interactive review deck & floating villa cards',
+        'Automated inquiry concierge routing with lead capture & booking',
+      ],
+      design: [
+        'Editorial dark-mode aesthetic with golden champagne accents & typography',
+        'End-to-end 8-step user journey from discovery to concierge handover',
+        'Cinematic video hero with seamless looping & micro-interactions',
+      ],
+      gallery: [
+        {
+          src: '/assets/Norvique Website Walkthrough.mp4',
+          poster: '/assets/Norvique Video Poster.png',
+          title: 'Norvique Live Website Video Walkthrough (Full Tour)',
+          description:
+            'Full 49-second recording of the live Norvique luxury website: dynamic hero video, Buy • Sell • Rent, futuristic architectural villas, 3D client review deck, and luxury concierge.',
+          stepBadge: '01 • Live Video Tour',
+          isVideo: true,
+          isDiagram: false,
+        },
+        {
+          src: '/assets/NORVIQUE Website User Flow.png',
+          title: 'Norvique 8-Step Complete Website User Flow & Architecture',
+          description:
+            'Complete user journey mapping from discovery to inquiry/booking: Landing & Entry, Search & Explore, Property Details, Enquiry/Contact, List Your Property (For Sellers), Concierge Contact, and User Accounts.',
+          stepBadge: '02 • User Flow & UX Architecture',
+          isVideo: false,
+          isDiagram: true,
+        },
+        {
+          src: '/assets/Norvique Luxury Property Showcase.png',
+          title: 'Norvique Luxury Property Showcase Master Suite',
+          description:
+            'Full portfolio showcase composite: Solis Pavilion, Buy/Sell/Rent portal, Futuristic Homes upcoming, client reviews deck, 3D architectural model in hand, and Exclusive Living.',
+          stepBadge: '03 • Showcase Master Suite',
+          isVideo: false,
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Norvique Futuristic Living.png',
+          title: 'Futuristic Living — Upcoming Architectural Masterpieces',
+          description:
+            'Ultra-modern biophilic and organic cantilevered luxury villas with infinity pools and private sea access in Jurmala, Latvia.',
+          stepBadge: '04 • Future Living Collection',
+          isVideo: false,
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Norvique Client Reviews.png',
+          title: 'Interactive 3D Client Reviews Carousel Deck',
+          description:
+            '3D stacked review cards with verified buyer ratings (James Peterson 5.0, Christopher Hall, Alexander Moore) and smooth card navigation.',
+          stepBadge: '05 • Client Testimonials & Trust',
+          isVideo: false,
+          isDiagram: false,
+        },
+      ],
+    },
   };
 
   const currentProject = projectsData[selectedProjectId] || projectsData.kangaroo;
@@ -386,6 +463,17 @@ export default function CaseStudyModal({
       rating: '4.9 ★ (App of the Day)',
       desc: 'Maps with stories, trips with meaning. Interactive curated travel maps, creator guides, offline GPS navigation, and Stripe creator monetization.',
       image: '/assets/Planitory Travel App Mockup.png',
+      active: true,
+    },
+    {
+      id: 'norvique',
+      name: 'Norvique — Curated Luxury Real Estate Platform',
+      category: 'Website & Digital Experience',
+      tag: 'Featured Luxury Website',
+      badgeBg: 'bg-stone-900 text-amber-300',
+      rating: '5.0 ★ (Awwwards Nominee)',
+      desc: 'Discover Latvia’s most exceptional villas. Cinematic 49s video walkthrough, 8-step user journey flow, 3D client reviews, and concierge booking.',
+      image: '/assets/Norvique Video Poster.png',
       active: true,
     },
     {
@@ -461,13 +549,24 @@ export default function CaseStudyModal({
               className="transition-transform duration-200 flex items-center justify-center"
               style={{ transform: `scale(${zoomLevel})` }}
             >
-              <img
-                src={currentItem.src}
-                alt={currentItem.title}
-                className={`max-w-[92vw] max-h-[82vh] object-contain rounded-xl shadow-2xl ${
-                  currentItem.isDiagram ? 'bg-white p-3' : 'bg-transparent'
-                }`}
-              />
+              {currentItem.isVideo ? (
+                <video
+                  src={currentItem.src}
+                  poster={currentItem.poster}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="max-w-[92vw] max-h-[82vh] object-contain rounded-xl shadow-2xl"
+                />
+              ) : (
+                <img
+                  src={currentItem.src}
+                  alt={currentItem.title}
+                  className={`max-w-[92vw] max-h-[82vh] object-contain rounded-xl shadow-2xl ${
+                    currentItem.isDiagram ? 'bg-white p-3' : 'bg-transparent'
+                  }`}
+                />
+              )}
             </div>
           </div>
 
@@ -495,7 +594,7 @@ export default function CaseStudyModal({
               }`}
             >
               <Smartphone className="w-4 h-4" />
-              <span>All Mobile Projects ({allMobileProjects.length})</span>
+              <span>All Projects ({allMobileProjects.length})</span>
             </button>
 
             <span className="text-gray-300">|</span>
@@ -566,6 +665,23 @@ export default function CaseStudyModal({
               <span>Planitory</span>
               <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">Travel App</span>
             </button>
+
+            {/* Norvique Quick Tab */}
+            <button
+              onClick={() => {
+                setSelectedProjectId('norvique');
+                setView('project');
+              }}
+              className={`flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
+                view === 'project' && selectedProjectId === 'norvique'
+                  ? 'bg-stone-900 text-amber-300 ring-1 ring-amber-400/40 shadow-xs'
+                  : 'text-gray-600 hover:text-amber-700 hover:bg-amber-50'
+              }`}
+            >
+              <Globe className="w-3.5 h-3.5 text-amber-500" />
+              <span>Norvique</span>
+              <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1.5 py-0.2 rounded-full">Luxury Website</span>
+            </button>
           </div>
 
           {/* Right section: Close button */}
@@ -589,7 +705,9 @@ export default function CaseStudyModal({
               
               {/* Hero Banner Header */}
               <div className={`p-6 sm:p-8 rounded-3xl border shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-6 ${
-                selectedProjectId === 'planitory'
+                selectedProjectId === 'norvique'
+                  ? 'bg-gradient-to-br from-stone-900 via-[#161722] to-stone-950 border-stone-800'
+                  : selectedProjectId === 'planitory'
                   ? 'bg-gradient-to-br from-indigo-50 via-white to-sky-50/50 border-indigo-200/70'
                   : selectedProjectId === 'spendsense'
                   ? 'bg-gradient-to-br from-emerald-50 via-white to-teal-50/50 border-emerald-200/70'
@@ -607,15 +725,19 @@ export default function CaseStudyModal({
                       {currentProject.rating}
                     </span>
                     <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-gray-700 border border-gray-200">
-                      Production Mobile Architecture
+                      {selectedProjectId === 'norvique' ? 'Production Web Platform' : 'Production Mobile Architecture'}
                     </span>
                   </div>
 
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#080A24] tracking-tight font-['Plus_Jakarta_Sans']">
+                  <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight font-['Plus_Jakarta_Sans'] ${
+                    selectedProjectId === 'norvique' ? 'text-white' : 'text-[#080A24]'
+                  }`}>
                     {currentProject.name}
                   </h2>
 
-                  <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed">
+                  <p className={`text-sm sm:text-base leading-relaxed ${
+                    selectedProjectId === 'norvique' ? 'text-stone-300' : 'text-[#4B5563]'
+                  }`}>
                     {currentProject.description}
                   </p>
                 </div>
@@ -625,10 +747,18 @@ export default function CaseStudyModal({
                   {currentProject.stats.map((stat, i) => (
                     <div
                       key={i}
-                      className="p-3 bg-white rounded-2xl border border-gray-200 shadow-2xs text-center md:text-left min-w-[140px]"
+                      className={`p-3 rounded-2xl border shadow-2xs text-center md:text-left min-w-[140px] ${
+                        selectedProjectId === 'norvique'
+                          ? 'bg-stone-800/80 border-stone-700'
+                          : 'bg-white border-gray-200'
+                      }`}
                     >
-                      <p className="text-[11px] font-semibold text-gray-500">{stat.label}</p>
-                      <p className="text-lg font-extrabold text-[#080A24]">{stat.value}</p>
+                      <p className={`text-[11px] font-semibold ${
+                        selectedProjectId === 'norvique' ? 'text-amber-400' : 'text-gray-500'
+                      }`}>{stat.label}</p>
+                      <p className={`text-lg font-extrabold ${
+                        selectedProjectId === 'norvique' ? 'text-white' : 'text-[#080A24]'
+                      }`}>{stat.value}</p>
                     </div>
                   ))}
 
@@ -657,7 +787,9 @@ export default function CaseStudyModal({
                     <h3 className="text-lg font-bold text-[#080A24] font-['Plus_Jakarta_Sans'] flex items-center gap-2">
                       <span>Project Showcase Gallery</span>
                       <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${
-                        selectedProjectId === 'planitory'
+                        selectedProjectId === 'norvique'
+                          ? 'text-amber-800 bg-amber-50 border-amber-300'
+                          : selectedProjectId === 'planitory'
                           ? 'text-indigo-700 bg-indigo-50 border-indigo-200'
                           : selectedProjectId === 'spendsense'
                           ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
@@ -714,15 +846,30 @@ export default function CaseStudyModal({
                     <span className="hidden sm:inline">Zoom HD</span>
                   </button>
 
-                  {/* Active Image */}
-                  <img
-                    src={currentItem.src}
-                    alt={currentItem.title}
-                    className={`w-full h-full max-h-[560px] object-contain p-2 sm:p-4 select-none cursor-pointer transition-transform duration-300 hover:scale-[1.01] ${
-                      currentItem.isDiagram ? 'filter contrast-[1.02]' : ''
-                    }`}
-                    onClick={() => setLightboxOpen(true)}
-                  />
+                  {/* Active Image or Video */}
+                  {currentItem.isVideo ? (
+                    <div className="w-full h-full max-h-[560px] flex items-center justify-center p-2 sm:p-4">
+                      <video
+                        src={currentItem.src}
+                        poster={currentItem.poster}
+                        controls
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full max-h-[520px] object-contain rounded-xl shadow-lg"
+                      />
+                    </div>
+                  ) : (
+                    <img
+                      src={currentItem.src}
+                      alt={currentItem.title}
+                      className={`w-full h-full max-h-[560px] object-contain p-2 sm:p-4 select-none cursor-pointer transition-transform duration-300 hover:scale-[1.01] ${
+                        currentItem.isDiagram ? 'filter contrast-[1.02]' : ''
+                      }`}
+                      onClick={() => setLightboxOpen(true)}
+                    />
+                  )}
 
                   {/* Floating Left/Right Arrows on image */}
                   <button
@@ -759,7 +906,9 @@ export default function CaseStudyModal({
                         onClick={() => setActiveImageIndex(idx)}
                         className={`group p-2 rounded-2xl border text-left transition-all cursor-pointer ${
                           isSelected
-                            ? selectedProjectId === 'planitory'
+                            ? selectedProjectId === 'norvique'
+                              ? 'bg-amber-50/80 border-amber-600 ring-2 ring-amber-600/30 shadow-sm'
+                              : selectedProjectId === 'planitory'
                               ? 'bg-indigo-50/80 border-indigo-600 ring-2 ring-indigo-600/30 shadow-sm'
                               : selectedProjectId === 'spendsense'
                               ? 'bg-emerald-50/80 border-emerald-500 ring-2 ring-emerald-500/30 shadow-sm'
@@ -773,17 +922,26 @@ export default function CaseStudyModal({
                           img.isDiagram ? 'bg-white border border-gray-200' : 'bg-gray-950'
                         }`}>
                           <img
-                            src={img.src}
+                            src={img.poster || img.src}
                             alt={img.title}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
+                          {img.isVideo && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                              <div className="w-5 h-5 rounded-full bg-white/90 text-black flex items-center justify-center shadow-md">
+                                <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
+                              </div>
+                            </div>
+                          )}
                           <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/70 text-[9px] font-bold text-white">
                             0{idx + 1}
                           </span>
                         </div>
                         <p className={`text-[11px] font-bold truncate ${
                           isSelected
-                            ? selectedProjectId === 'planitory'
+                            ? selectedProjectId === 'norvique'
+                              ? 'text-amber-800'
+                              : selectedProjectId === 'planitory'
                               ? 'text-indigo-700'
                               : selectedProjectId === 'spendsense'
                               ? 'text-emerald-700'
@@ -828,10 +986,17 @@ export default function CaseStudyModal({
                         img.isDiagram ? 'bg-white border border-gray-100' : 'bg-[#080A24]'
                       }`}>
                         <img
-                          src={img.src}
+                          src={img.poster || img.src}
                           alt={img.title}
                           className="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
                         />
+                        {img.isVideo && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-colors">
+                            <div className="w-10 h-10 rounded-full bg-white/90 text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                              <Play className="w-5 h-5 fill-current ml-0.5" />
+                            </div>
+                          </div>
+                        )}
                         <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-1.5">
                           <Maximize2 className="w-4 h-4" /> Click to expand HD
                         </div>
@@ -847,7 +1012,9 @@ export default function CaseStudyModal({
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-gray-100">
                 <div className="p-4 bg-white rounded-2xl border border-gray-200">
                   <h5 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5 ${
-                    selectedProjectId === 'planitory'
+                    selectedProjectId === 'norvique'
+                      ? 'text-amber-700'
+                      : selectedProjectId === 'planitory'
                       ? 'text-indigo-600'
                       : selectedProjectId === 'spendsense'
                       ? 'text-emerald-600'
@@ -870,7 +1037,9 @@ export default function CaseStudyModal({
 
                 <div className="p-4 bg-white rounded-2xl border border-gray-200">
                   <h5 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5 ${
-                    selectedProjectId === 'planitory'
+                    selectedProjectId === 'norvique'
+                      ? 'text-amber-700'
+                      : selectedProjectId === 'planitory'
                       ? 'text-indigo-600'
                       : selectedProjectId === 'spendsense'
                       ? 'text-emerald-600'
@@ -894,7 +1063,9 @@ export default function CaseStudyModal({
                 <div className="p-4 bg-white rounded-2xl border border-gray-200 flex flex-col justify-between">
                   <div>
                     <h5 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5 ${
-                      selectedProjectId === 'planitory'
+                      selectedProjectId === 'norvique'
+                        ? 'text-amber-700'
+                        : selectedProjectId === 'planitory'
                         ? 'text-indigo-600'
                         : selectedProjectId === 'spendsense'
                         ? 'text-emerald-600'
@@ -903,17 +1074,21 @@ export default function CaseStudyModal({
                         : 'text-[#5B3DF5]'
                     }`}>
                       <Sparkles className="w-3.5 h-3.5" />
-                      Build Your Mobile App
+                      {selectedProjectId === 'norvique' ? 'Build Your Website' : 'Build Your Mobile App'}
                     </h5>
                     <p className="text-xs text-gray-600 leading-relaxed">
-                      Codexa builds high-performance iOS and Android apps powered by modern AI.
+                      {selectedProjectId === 'norvique'
+                        ? 'Codexa designs and engineers ultra-premium, high-converting websites and digital experiences.'
+                        : 'Codexa builds high-performance iOS and Android apps powered by modern AI.'}
                     </p>
                   </div>
                   <a
                     href="mailto:ranjeetserious8@gmail.com"
                     onClick={onClose}
                     className={`mt-3 inline-flex items-center justify-center gap-1.5 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-all cursor-pointer ${
-                      selectedProjectId === 'planitory'
+                      selectedProjectId === 'norvique'
+                        ? 'bg-stone-900 hover:bg-stone-800 text-amber-300 border border-amber-400/40 shadow-sm'
+                        : selectedProjectId === 'planitory'
                         ? 'bg-indigo-600 hover:bg-indigo-700'
                         : selectedProjectId === 'spendsense'
                         ? 'bg-emerald-600 hover:bg-emerald-700'
@@ -922,7 +1097,7 @@ export default function CaseStudyModal({
                         : 'bg-[#5B3DF5] hover:bg-[#4D30E2]'
                     }`}
                   >
-                    <span>Start Your App</span>
+                    <span>{selectedProjectId === 'norvique' ? 'Start Your Website' : 'Start Your App'}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
