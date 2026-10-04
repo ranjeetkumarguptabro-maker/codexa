@@ -7,6 +7,7 @@ export default function RecentWork() {
   const [modalProject, setModalProject] = useState('kangaroo');
   const [featuredMobileIndex, setFeaturedMobileIndex] = useState(0); // 0: Kangaroo, 1: Blind AI, 2: SpendSense, 3: Planitory
   const [featuredSaasIndex, setFeaturedSaasIndex] = useState(0); // 0: Norvique, 1: Dashboard
+  const [featuredEcommerceIndex, setFeaturedEcommerceIndex] = useState(0); // 0: Flagship, 1: Product PDP, 2: Foldable
   const [featuredAiIndex, setFeaturedAiIndex] = useState(0); // 0: Dashboard, 1: Job Match, 2: AI Chats
 
   const getTargetProject = () => {
@@ -155,26 +156,149 @@ export default function RecentWork() {
       category: 'Website',
       icon: ShoppingBag,
       iconBg: 'bg-emerald-100 text-emerald-600',
-      tag: 'Modern Shop',
+      tag: 'Under Armour Live',
+      isClickable: true,
+      targetProject: 'under-armour',
       preview: (
-        <div className="w-full h-44 bg-[#F8FAFC] rounded-xl p-4 border border-gray-200 flex flex-col justify-between">
-          <div className="flex items-center justify-between text-xs text-gray-700 font-bold">
-            <span>Discover Modern Style</span>
-            <span className="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded text-[10px]">
+        <div className="w-full h-44 bg-gradient-to-br from-[#0F1117] via-[#1A1D27] to-[#0A0C12] rounded-xl overflow-hidden relative text-white flex flex-col justify-between p-3 border border-emerald-500/30 group-hover:border-emerald-400 transition-all shadow-inner">
+          {/* Switcher mini tabs */}
+          <div className="flex items-center justify-between z-10">
+            <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md p-0.5 rounded-lg border border-white/10 text-[9px]">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFeaturedEcommerceIndex(0);
+                }}
+                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                  featuredEcommerceIndex === 0
+                    ? 'bg-emerald-600 text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Flagship
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFeaturedEcommerceIndex(1);
+                }}
+                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                  featuredEcommerceIndex === 1
+                    ? 'bg-rose-600 text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Product PDP
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFeaturedEcommerceIndex(2);
+                }}
+                className={`px-1.5 py-0.5 rounded font-bold transition-all cursor-pointer ${
+                  featuredEcommerceIndex === 2
+                    ? 'bg-indigo-600 text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Foldable
+              </button>
+            </div>
+
+            <span className="text-emerald-400 font-bold text-[10px] bg-emerald-500/20 px-1.5 py-0.5 rounded-full border border-emerald-400/30 flex items-center gap-1">
+              <ShoppingBag className="w-2.5 h-2.5 text-emerald-400" />
               Fast Checkout
             </span>
           </div>
-          <div className="grid grid-cols-2 gap-2 my-2">
-            <div className="h-16 bg-purple-50 rounded-lg border border-purple-100 flex items-center justify-center text-xs font-semibold text-purple-700">
-              Product 01
+
+          {featuredEcommerceIndex === 0 ? (
+            /* Under Armour Flagship Laptop View */
+            <div className="flex items-center gap-3 my-auto z-10">
+              <div className="w-16 h-20 rounded-lg overflow-hidden border border-emerald-400/30 shadow-md shrink-0 bg-black relative">
+                <img
+                  src="/assets/Under Armour Ecommerce Flagship Laptop.png"
+                  alt="Under Armour Flagship Laptop"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[11px] font-bold text-white leading-tight">
+                  Under Armour Flagship
+                </p>
+                <p className="text-[10px] text-emerald-300 font-medium">
+                  BRING THE STAY UNRIVALED
+                </p>
+                <p className="text-[9px] text-gray-300">
+                  Shop Heatgear • Men & Women
+                </p>
+                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-emerald-600/90 px-2 py-0.5 rounded mt-1">
+                  <span>Explore Case Study</span>
+                  <ArrowRight className="w-2.5 h-2.5" />
+                </div>
+              </div>
             </div>
-            <div className="h-16 bg-blue-50 rounded-lg border border-blue-100 flex items-center justify-center text-xs font-semibold text-blue-700">
-              Product 02
+          ) : featuredEcommerceIndex === 1 ? (
+            /* Under Armour Product PDP View */
+            <div className="flex items-center gap-3 my-auto z-10">
+              <div className="w-16 h-20 rounded-lg overflow-hidden border border-rose-400/30 shadow-md shrink-0 bg-white relative">
+                <img
+                  src="/assets/Under Armour Product Detail PDP.png"
+                  alt="Under Armour Product PDP"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[11px] font-bold text-white leading-tight">
+                  UA Command Warm Up
+                </p>
+                <p className="text-[10px] text-rose-300 font-medium">
+                  $75.00 • 4.8 ★ (7 Reviews)
+                </p>
+                <p className="text-[9px] text-gray-300">
+                  Short / Reg / Tall • Multi-Size
+                </p>
+                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-rose-600/90 px-2 py-0.5 rounded mt-1">
+                  <span>Explore Case Study</span>
+                  <ArrowRight className="w-2.5 h-2.5" />
+                </div>
+              </div>
             </div>
+          ) : (
+            /* Under Armour Foldable Device View */
+            <div className="flex items-center gap-3 my-auto z-10">
+              <div className="w-16 h-20 rounded-lg overflow-hidden border border-indigo-400/30 shadow-md shrink-0 bg-black relative">
+                <img
+                  src="/assets/Under Armour Foldable Device Retail.png"
+                  alt="Under Armour Foldable Device"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[11px] font-bold text-white leading-tight">
+                  Adaptive Foldable Retail
+                </p>
+                <p className="text-[10px] text-indigo-300 font-medium">
+                  Dual-Pane Responsive Layout
+                </p>
+                <p className="text-[9px] text-gray-300">
+                  Instant Cart • Sub-Second Load
+                </p>
+                <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-indigo-600/90 px-2 py-0.5 rounded mt-1">
+                  <span>Explore Case Study</span>
+                  <ArrowRight className="w-2.5 h-2.5" />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Bottom tag bar */}
+          <div className="flex items-center justify-between text-[10px] text-gray-300 border-t border-white/10 pt-1.5 z-10">
+            <span className="text-emerald-300 font-semibold">Under Armour • Flagship</span>
+            <span className="text-emerald-400 font-bold">1-Click Checkout</span>
           </div>
-          <div className="h-6 bg-[#080A24] rounded-lg text-white text-[10px] font-semibold flex items-center justify-center">
-            Shop Now →
-          </div>
+
+          {/* Background glow */}
+          <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-emerald-500/20 rounded-full blur-xl pointer-events-none" />
         </div>
       ),
     },

@@ -26,7 +26,8 @@ import {
   Play,
   Building2,
   Bot,
-  Briefcase
+  Briefcase,
+  ShoppingBag
 } from 'lucide-react';
 
 export default function CaseStudyModal({
@@ -481,6 +482,71 @@ export default function CaseStudyModal({
         },
       ],
     },
+    'under-armour': {
+      id: 'under-armour',
+      name: 'Under Armour — Next-Gen E-Commerce & High-Performance Retail',
+      category: 'E-Commerce Store & Digital Flagship',
+      tag: 'Featured E-Commerce',
+      badgeColor: 'bg-[#0F1117] text-emerald-400 border border-emerald-500/40',
+      rating: '4.9 ★ (Global Retail Innovation)',
+      headline: 'High-Performance Athletics: Adaptive Multi-Device Shopping, Instant Cart & Frictionless Checkout',
+      description:
+        'A state-of-the-art e-commerce ecosystem designed and engineered by Codexa for Under Armour. Features ultra-responsive cross-device experiences from desktop laptops to mobile smartphones and foldable dual-screen devices, dynamic multi-tier sizing matrix (Length & Fit Guide), real-time inventory synchronization, sub-second headless cart, and frictionless 1-click checkout.',
+      stats: [
+        { label: 'Checkout Speed', value: '< 1.2s Instant' },
+        { label: 'Conversion Lift', value: '+38% Uplift' },
+        { label: 'Architecture', value: 'Headless Next.js' },
+      ],
+      engineering: [
+        'Headless Shopify Storefront API with Next.js 15 ISR for instantaneous page loads',
+        'Foldable dual-pane responsive engine utilizing CSS Screen Fold API & Tailwind',
+        'Interactive PDP matrix supporting multiple Length options (Short, Regular, Tall) and 6 size tiers',
+        'Stripe / Apple Pay / Google Pay sub-second 1-click cart integration',
+      ],
+      design: [
+        'High-impact athletic editorial typography: "BRING THE STAY UNRIVALED"',
+        'Adaptive dual-pane layout for foldable devices pairing campaign hero with catalog grid',
+        'Streamlined mobile shopping flow with Back-to-School lookbook and high-action imagery',
+      ],
+      gallery: [
+        {
+          src: '/assets/Under Armour Ecommerce Flagship Laptop.png',
+          title: 'Under Armour Flagship E-Commerce Storefront (MacBook Pro)',
+          description:
+            'Desktop flagship digital presence: "BRING THE STAY UNRIVALED", Shop HeatGear call-to-action, high-fashion athletic editorial layout, and seamless navigation across Men, Women, and Shoes.',
+          stepBadge: '01 • Desktop Flagship',
+          isVideo: false,
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Under Armour Mobile App Store.png',
+          title: 'Under Armour Mobile Shopping & Back-to-School Campaign (iPhone)',
+          description:
+            'Ultra-fast mobile commerce experience: "Compete With Yourself", video lookbook autoplay, high-action baseball athlete showcase, and "Outfits For Any Occasion" modular lookbook.',
+          stepBadge: '02 • Mobile Shopping Flow',
+          isVideo: false,
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Under Armour Product Detail PDP.png',
+          title: 'Under Armour High-Conversion Product Detail Page (PDP)',
+          description:
+            'Full PDP matrix for UA Command Warm Up ($75.00, 4.8 ★): Lightweight performance fabric callout, Length selector (Short, Regular, Tall), 6-tier Size matrix (XST to XXLT), Size & Fit Guide, and 1-click Add to Bag.',
+          stepBadge: '03 • High-Conversion PDP',
+          isVideo: false,
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Under Armour Foldable Device Retail.png',
+          title: 'Adaptive Dual-Screen Foldable Device Retail Experience',
+          description:
+            'Next-generation foldable form factor showcase: Dual-pane split viewport pairing hero campaign storytelling on top with live product catalog grid below, enabling simultaneous discovery and checkout.',
+          stepBadge: '04 • Foldable Multi-Screen Retail',
+          isVideo: false,
+          isDiagram: false,
+        },
+      ],
+    },
   };
 
   const currentProject = projectsData[selectedProjectId] || projectsData.kangaroo;
@@ -561,6 +627,17 @@ export default function CaseStudyModal({
       rating: '4.9 ★ (AI Product of the Year)',
       desc: 'Autonomous career co-pilot. Semantic job matching across 46k+ vacancies, dynamic ATS resume builder, deadline tracking, and recruiter chat assistant.',
       image: '/assets/Career GO AI Dashboard Tablet.png',
+      active: true,
+    },
+    {
+      id: 'under-armour',
+      name: 'Under Armour — High-Performance E-Commerce',
+      category: 'E-Commerce Store & Digital Retail',
+      tag: 'Featured E-Commerce',
+      badgeBg: 'bg-emerald-600 text-white',
+      rating: '4.9 ★ (Global Retail Innovation)',
+      desc: 'High-performance athletic e-commerce flagship. Headless Shopify storefront, dual-screen foldable adaptation, high-conversion PDP, and sub-second 1-click checkout.',
+      image: '/assets/Under Armour Ecommerce Flagship Laptop.png',
       active: true,
     },
     {
@@ -785,6 +862,23 @@ export default function CaseStudyModal({
               <Bot className="w-3.5 h-3.5 text-purple-300" />
               <span>Career GO</span>
               <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">AI Assistant</span>
+            </button>
+
+            {/* Under Armour Quick Tab */}
+            <button
+              onClick={() => {
+                setSelectedProjectId('under-armour');
+                setView('project');
+              }}
+              className={`flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
+                view === 'project' && selectedProjectId === 'under-armour'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-gray-600 hover:text-emerald-600 hover:bg-emerald-50'
+              }`}
+            >
+              <ShoppingBag className="w-3.5 h-3.5 text-emerald-300" />
+              <span>Under Armour</span>
+              <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">E-Commerce</span>
             </button>
           </div>
 
