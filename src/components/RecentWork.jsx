@@ -102,11 +102,11 @@ export default function RecentWork() {
             <div className="flex items-center gap-3 my-auto z-10">
               <div className="w-16 h-20 rounded-lg overflow-hidden border border-amber-400/30 shadow-md shrink-0 bg-black relative">
                 <img
-                  src="/assets/Norvique Video Poster.png"
-                  alt="Norvique Luxury Estate"
+                  src="/assets/Norvique Sunset Villa Hero.png"
+                  alt="Norvique Luxury Estate Cover"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black/35 flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/25 flex items-center justify-center">
                   <div className="w-6 h-6 rounded-full bg-white/90 text-black flex items-center justify-center shadow-md">
                     <Play className="w-3 h-3 fill-current ml-0.5" />
                   </div>
@@ -120,7 +120,7 @@ export default function RecentWork() {
                   Curated Luxury Villas • Latvia
                 </p>
                 <p className="text-[9px] text-gray-300">
-                  Video Tour • 8-Step Flow • Concierge
+                  Cover Page • 49s Tour • 8-Step Flow
                 </p>
                 <div className="inline-flex items-center gap-1 text-[9px] font-bold text-white bg-amber-600/90 px-2 py-0.5 rounded mt-1">
                   <span>Explore Case Study</span>
