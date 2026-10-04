@@ -8,9 +8,9 @@ export default function Pricing() {
       name: 'Personal & Business',
       nameSub: 'Landing Pages',
       subtitle: 'For individuals, creators and small businesses.',
-      originalPrice: '₹8,000',
-      price: '₹6,000',
-      discountBadge: '25% OFF',
+      originalPrice: '₹7,000',
+      price: '₹5,000',
+      discountBadge: '29% OFF',
       savings: 'Save ₹2,000',
       icon: '/assets/Glossy_Blue_Globe_Icon_transparent.png',
       graphic: '/assets/3D_Pastel_Web_Dashboard_UI_transparent.png',
@@ -19,9 +19,9 @@ export default function Pricing() {
       subTextColor: 'text-gray-500',
       checkBg: 'bg-[#3B82F6] text-white',
       itemTextColor: 'text-gray-700',
-      ctaText: 'Get Started (25% OFF)',
+      ctaText: 'Get Started (29% OFF)',
       ctaStyle: 'bg-gradient-to-r from-[#5B3DF5] to-[#7352F7] hover:from-[#502fee] hover:to-[#653ff0] text-white shadow-md hover:shadow-lg',
-      subject: 'Inquiry for Personal & Business Landing Pages (₹6,000 Plan - 25% OFF)',
+      subject: 'Inquiry for Personal & Business Landing Pages (₹5,000 Plan - 29% OFF)',
       features: [
         'Up to 5 pages',
         'Custom responsive design',
@@ -122,7 +122,7 @@ export default function Pricing() {
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#EDE9FE] to-purple-100 text-[#5B3DF5] text-xs font-bold mb-4 shadow-xs border border-purple-200/60">
             <span className="w-2 h-2 rounded-full bg-[#5B3DF5] animate-pulse"></span>
-            <span>Special 25% OFF Limited Offer</span>
+            <span>Special Limited Offer • Up to 29% OFF</span>
           </div>
 
           {/* Headline */}
@@ -200,13 +200,21 @@ export default function Pricing() {
                   <div>
                     {plan.originalPrice && (
                       <div className="flex items-center gap-2 mb-1.5">
-                        <span className={`text-base sm:text-lg line-through font-semibold ${plan.isPopular ? 'text-purple-200/70' : 'text-gray-400'}`}>
+                        <span
+                          className={`text-base sm:text-lg font-bold line-through decoration-red-500 decoration-[3px] ${
+                            plan.isPopular ? 'text-white/80' : 'text-gray-400'
+                          }`}
+                          style={{
+                            textDecorationColor: '#EF4444',
+                            textDecorationThickness: '3px',
+                          }}
+                        >
                           {plan.originalPrice}
                         </span>
                         <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider ${
                           plan.isPopular
                             ? 'bg-amber-300 text-[#080A24] shadow-xs'
-                            : 'bg-emerald-100 text-emerald-700'
+                            : 'bg-red-50 text-red-600 border border-red-200/80'
                         }`}>
                           {plan.discountBadge}
                         </span>
