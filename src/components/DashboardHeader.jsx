@@ -27,26 +27,20 @@ export default function DashboardHeader({ onSearch }) {
 
       {/* Action Icons and User Profile */}
       <div className="flex items-center gap-4">
-        {/* Notification Bell with Badge */}
+        {/* Notification Bell */}
         <button
-          className="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100/80 rounded-xl transition-colors cursor-pointer"
+          className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100/80 rounded-xl transition-colors cursor-pointer"
           title="Notifications"
         >
           <Bell className="w-5 h-5 text-[#4B5563]" />
-          <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-[#EF4444] text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white leading-none">
-            0
-          </span>
         </button>
 
-        {/* Message Bubble with Badge */}
+        {/* Message Bubble */}
         <button
-          className="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100/80 rounded-xl transition-colors cursor-pointer"
+          className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100/80 rounded-xl transition-colors cursor-pointer"
           title="Messages"
         >
           <MessageSquare className="w-5 h-5 text-[#4B5563]" />
-          <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-[#EF4444] text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white leading-none">
-            0
-          </span>
         </button>
 
         {/* User Profile Pill */}
