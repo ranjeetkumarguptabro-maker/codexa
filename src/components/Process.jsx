@@ -143,13 +143,16 @@ export default function Process() {
                 </div>
 
                 {/* Continue button */}
-                <button
-                  onClick={() => alert(`Ready to start your ${selectedType} project with Codexa!`)}
-                  className="w-full bg-[#5B3DF5] hover:bg-[#4E32E5] text-white text-xs font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer hover:shadow-md"
+                <a
+                  href="https://wa.me/qr/IGIJKXHMGHKED1?s=r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#5B3DF5] hover:bg-[#4E32E5] text-white text-xs sm:text-sm font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer hover:shadow-md group"
                 >
-                  <span>Continue</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                  <MessageSquare className="w-4 h-4 text-white/90" />
+                  <span>Continue on WhatsApp ({selectedType})</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </div>
 
             </div>

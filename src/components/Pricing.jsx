@@ -8,7 +8,10 @@ export default function Pricing() {
       name: 'Personal & Business',
       nameSub: 'Landing Pages',
       subtitle: 'For individuals, creators and small businesses.',
-      price: '₹8,000',
+      originalPrice: '₹8,000',
+      price: '₹6,000',
+      discountBadge: '25% OFF',
+      savings: 'Save ₹2,000',
       icon: '/assets/Glossy_Blue_Globe_Icon_transparent.png',
       graphic: '/assets/3D_Pastel_Web_Dashboard_UI_transparent.png',
       cardBg: 'bg-white border-gray-200/80 shadow-[0_10px_35px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.08)]',
@@ -16,9 +19,9 @@ export default function Pricing() {
       subTextColor: 'text-gray-500',
       checkBg: 'bg-[#3B82F6] text-white',
       itemTextColor: 'text-gray-700',
-      ctaText: 'Get Started',
-      ctaStyle: 'bg-white hover:bg-gray-50 text-[#080A24] border border-gray-200/90 shadow-2xs hover:border-purple-300 hover:shadow-md',
-      subject: 'Inquiry for Personal & Business Landing Pages (₹8,000 Plan)',
+      ctaText: 'Get Started (25% OFF)',
+      ctaStyle: 'bg-gradient-to-r from-[#5B3DF5] to-[#7352F7] hover:from-[#502fee] hover:to-[#653ff0] text-white shadow-md hover:shadow-lg',
+      subject: 'Inquiry for Personal & Business Landing Pages (₹6,000 Plan - 25% OFF)',
       features: [
         'Up to 5 pages',
         'Custom responsive design',
@@ -38,7 +41,10 @@ export default function Pricing() {
       name: 'Small Business',
       nameSub: 'Website',
       subtitle: 'A complete professional website for growing businesses.',
-      price: '₹40,000',
+      originalPrice: '₹40,000',
+      price: '₹30,000',
+      discountBadge: '25% OFF',
+      savings: 'Save ₹10,000',
       icon: '/assets/Glossy_Purple_Office_Icon_transparent.png',
       graphic: '/assets/Glossy_3D_Analytics_Dashboard_transparent.png',
       crownBadge: '/assets/Glossy Most Popular Crown Badge.png',
@@ -47,9 +53,9 @@ export default function Pricing() {
       subTextColor: 'text-purple-200',
       checkBg: 'bg-purple-300/30 text-white border border-purple-200/40',
       itemTextColor: 'text-purple-100',
-      ctaText: 'Get Started',
-      ctaStyle: 'bg-white/15 hover:bg-white/25 text-white border border-white/40 shadow-lg backdrop-blur-md hover:shadow-xl',
-      subject: 'Inquiry for Small Business Website (₹40,000 Plan)',
+      ctaText: 'Get Started (25% OFF)',
+      ctaStyle: 'bg-white hover:bg-gray-100 text-[#080A24] font-bold shadow-lg hover:shadow-xl',
+      subject: 'Inquiry for Small Business Website (₹30,000 Plan - 25% OFF)',
       features: [
         'Up to 10 pages',
         'Custom UI/UX design',
@@ -70,7 +76,10 @@ export default function Pricing() {
       name: 'E-commerce +',
       nameSub: 'AI Agent',
       subtitle: 'A powerful online store with AI-powered customer experience.',
-      price: '₹70,000',
+      originalPrice: '₹70,000',
+      price: '₹52,500',
+      discountBadge: '25% OFF',
+      savings: 'Save ₹17,500',
       icon: '/assets/Glossy_Shopping_Cart_Icon_transparent.png',
       graphic: '/assets/Glossy_AI_Ecommerce_Sneaker_transparent.png',
       cardBg: 'bg-white border-gray-200/80 shadow-[0_10px_35px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(255,101,67,0.08)]',
@@ -78,9 +87,9 @@ export default function Pricing() {
       subTextColor: 'text-gray-500',
       checkBg: 'bg-[#FF6543]/15 text-[#FF6543]',
       itemTextColor: 'text-gray-700',
-      ctaText: 'Get Started',
+      ctaText: 'Get Started (25% OFF)',
       ctaStyle: 'bg-gradient-to-r from-[#FF6543] to-[#FF8755] hover:from-[#F05532] hover:to-[#F27845] text-white shadow-[0_8px_25px_rgba(255,101,67,0.35)] hover:shadow-[0_12px_30px_rgba(255,101,67,0.45)]',
-      subject: 'Inquiry for E-commerce + AI Agent (₹70,000 Plan)',
+      subject: 'Inquiry for E-commerce + AI Agent (₹52,500 Plan - 25% OFF)',
       features: [
         'Custom e-commerce UI/UX',
         'Product catalog',
@@ -111,8 +120,9 @@ export default function Pricing() {
         <div className="text-center max-w-3xl mx-auto mb-16 relative">
           
           {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#EDE9FE] text-[#5B3DF5] text-xs font-semibold mb-4">
-            <span>Simple & Transparent Pricing</span>
+          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#EDE9FE] to-purple-100 text-[#5B3DF5] text-xs font-bold mb-4 shadow-xs border border-purple-200/60">
+            <span className="w-2 h-2 rounded-full bg-[#5B3DF5] animate-pulse"></span>
+            <span>Special 25% OFF Limited Offer</span>
           </div>
 
           {/* Headline */}
@@ -188,9 +198,30 @@ export default function Pricing() {
                 {/* Price & 3D Illustration Graphic Row */}
                 <div className="flex items-center justify-between gap-3 my-6 pb-6 border-b border-black/5 dark:border-white/10">
                   <div>
-                    <span className={`text-4xl sm:text-[42px] font-extrabold tracking-tight font-['Plus_Jakarta_Sans'] ${plan.textColor}`}>
-                      {plan.price}
-                    </span>
+                    {plan.originalPrice && (
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className={`text-base sm:text-lg line-through font-semibold ${plan.isPopular ? 'text-purple-200/70' : 'text-gray-400'}`}>
+                          {plan.originalPrice}
+                        </span>
+                        <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                          plan.isPopular
+                            ? 'bg-amber-300 text-[#080A24] shadow-xs'
+                            : 'bg-emerald-100 text-emerald-700'
+                        }`}>
+                          {plan.discountBadge}
+                        </span>
+                      </div>
+                    )}
+                    <div className="flex items-baseline gap-1">
+                      <span className={`text-4xl sm:text-[42px] font-extrabold tracking-tight font-['Plus_Jakarta_Sans'] ${plan.textColor}`}>
+                        {plan.price}
+                      </span>
+                    </div>
+                    {plan.savings && (
+                      <p className={`text-[11px] font-bold mt-1 ${plan.isPopular ? 'text-amber-300' : 'text-emerald-600'}`}>
+                        {plan.savings}
+                      </p>
+                    )}
                   </div>
 
                   {/* 3D Illustration Graphic Asset */}
@@ -219,13 +250,26 @@ export default function Pricing() {
               </div>
 
               {/* CTA Button */}
-              <div className="pt-2">
+              <div className="pt-2 space-y-2">
                 <a
                   href={`mailto:ranjeetserious8@gmail.com?subject=${encodeURIComponent(plan.subject)}`}
                   className={`w-full py-3.5 px-6 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer ${plan.ctaStyle}`}
                 >
                   <span>{plan.ctaText}</span>
                   <ArrowRight className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://wa.me/qr/IGIJKXHMGHKED1?s=r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full py-2 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors ${
+                    plan.isPopular
+                      ? 'text-purple-200 hover:text-white hover:bg-white/10'
+                      : 'text-gray-500 hover:text-[#5B3DF5] hover:bg-purple-50'
+                  }`}
+                >
+                  <span>Or order via WhatsApp</span>
+                  <ArrowRight className="w-3 h-3" />
                 </a>
               </div>
             </div>
