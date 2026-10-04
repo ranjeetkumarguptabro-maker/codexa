@@ -19,7 +19,9 @@ import {
   Navigation,
   QrCode,
   TrendingUp,
-  Wallet
+  Wallet,
+  MapPin,
+  Compass
 } from 'lucide-react';
 
 export default function CaseStudyModal({
@@ -266,6 +268,66 @@ export default function CaseStudyModal({
         },
       ],
     },
+    planitory: {
+      id: 'planitory',
+      name: 'Planitory — Maps with Stories, Trips with Meaning',
+      category: 'iOS & Android (Travel & Maps)',
+      tag: 'Featured Travel Tech',
+      badgeColor: 'bg-indigo-600 text-white',
+      rating: '4.9 ★ (App of the Day)',
+      headline: 'A personalised guide, built inside your map — Discover, buy and create travel maps.',
+      description:
+        'A next-generation travel & creator platform engineered by Codexa. Connects travelers with local creators who share curated interactive map guides, audio tours, offline GPS navigation, and seamless Stripe micro-transactions.',
+      stats: [
+        { label: 'Curated Maps', value: '50,000+' },
+        { label: 'Active Creators', value: '12,000+' },
+        { label: 'Offline GPS', value: '100% Vector' },
+      ],
+      engineering: [
+        'Mapbox / MapLibre vector tiles with customized cartographic shaders',
+        'Full offline vector map download & turn-by-turn GPS cache',
+        'Stripe Connect creator monetization engine with 1-click checkout',
+      ],
+      design: [
+        'Editorial travel magazine layout integrated with interactive cartography',
+        'Micro-interaction rich audio notes and location unlock cards',
+        'Creator profile portfolio hubs with follower feeds & verified badges',
+      ],
+      gallery: [
+        {
+          src: '/assets/Planitory Travel App Mockup.png',
+          title: 'Planitory Travel App Flagship Hero Showcase',
+          description:
+            'Flagship 3D iPhone showcase featuring curated Paris café guides, creator profiles, voice assistant ("Tap to speak"), floating travel memories, and interactive globe pins.',
+          stepBadge: '01 • Hero Experience',
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Planitory_10_Screens_Equal_Size_16x9.png',
+          title: 'Planitory Complete 10-Screen Architecture Suite (16:9 HD)',
+          description:
+            'Complete 10-screen high fidelity master suite: Discover, Explore Best Cafés in Vienna, Creators Hub, User & Creator Profiles, Map Details, Included Locations, Traveler Reviews, Stripe Checkout, and Trip Notifications.',
+          stepBadge: '02 • Complete 10-Screen Master Suite',
+          isDiagram: true,
+        },
+        {
+          src: '/assets/Planitory Creators & Social Maps.png',
+          title: 'Planitory Creators Hub & Interactive Social Maps',
+          description:
+            'Explore top travel creators (Emma Wilson, Alex Carter, Sophie Kim), profile showcases, follower leaderboards, and interactive city map guides.',
+          stepBadge: '03 • Creator Economy Hub',
+          isDiagram: false,
+        },
+        {
+          src: '/assets/Planitory Discovery & Curated Guides.png',
+          title: 'Planitory Discovery, Reviews & Stripe Checkout',
+          description:
+            'Deep dive into map purchases: Location unlocks (Café de Flore, Carette), verified traveler reviews, Apple Pay / Stripe card checkout ($12), and trip notifications.',
+          stepBadge: '04 • Monetization & Checkout',
+          isDiagram: false,
+        },
+      ],
+    },
   };
 
   const currentProject = projectsData[selectedProjectId] || projectsData.kangaroo;
@@ -313,6 +375,17 @@ export default function CaseStudyModal({
       rating: '4.9 ★ (Fintech Innovation Award)',
       desc: 'Turn everyday spending into a brighter future. AI receipt scanning, merchant insights, retirement compound calculators, and gamified financial learning.',
       image: '/assets/SpendSense AI Finance Assistant.png',
+      active: true,
+    },
+    {
+      id: 'planitory',
+      name: 'Planitory — Maps with Stories, Trips with Meaning',
+      category: 'iOS & Android (Travel & Maps)',
+      tag: 'Featured Travel Tech',
+      badgeBg: 'bg-indigo-600 text-white',
+      rating: '4.9 ★ (App of the Day)',
+      desc: 'Maps with stories, trips with meaning. Interactive curated travel maps, creator guides, offline GPS navigation, and Stripe creator monetization.',
+      image: '/assets/Planitory Travel App Mockup.png',
       active: true,
     },
     {
@@ -476,6 +549,23 @@ export default function CaseStudyModal({
               <span>SpendSense</span>
               <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">Fintech AI</span>
             </button>
+
+            {/* Planitory Quick Tab */}
+            <button
+              onClick={() => {
+                setSelectedProjectId('planitory');
+                setView('project');
+              }}
+              className={`flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
+                view === 'project' && selectedProjectId === 'planitory'
+                  ? 'bg-indigo-600 text-white shadow-xs'
+                  : 'text-gray-600 hover:text-indigo-600 hover:bg-indigo-50'
+              }`}
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              <span>Planitory</span>
+              <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">Travel App</span>
+            </button>
           </div>
 
           {/* Right section: Close button */}
@@ -499,7 +589,9 @@ export default function CaseStudyModal({
               
               {/* Hero Banner Header */}
               <div className={`p-6 sm:p-8 rounded-3xl border shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-6 ${
-                selectedProjectId === 'spendsense'
+                selectedProjectId === 'planitory'
+                  ? 'bg-gradient-to-br from-indigo-50 via-white to-sky-50/50 border-indigo-200/70'
+                  : selectedProjectId === 'spendsense'
                   ? 'bg-gradient-to-br from-emerald-50 via-white to-teal-50/50 border-emerald-200/70'
                   : selectedProjectId === 'blind-ai'
                   ? 'bg-gradient-to-br from-amber-50 via-white to-orange-50/50 border-amber-200/70'
@@ -565,7 +657,9 @@ export default function CaseStudyModal({
                     <h3 className="text-lg font-bold text-[#080A24] font-['Plus_Jakarta_Sans'] flex items-center gap-2">
                       <span>Project Showcase Gallery</span>
                       <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${
-                        selectedProjectId === 'spendsense'
+                        selectedProjectId === 'planitory'
+                          ? 'text-indigo-700 bg-indigo-50 border-indigo-200'
+                          : selectedProjectId === 'spendsense'
                           ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
                           : selectedProjectId === 'blind-ai'
                           ? 'text-amber-700 bg-amber-50 border-amber-200'
@@ -665,7 +759,9 @@ export default function CaseStudyModal({
                         onClick={() => setActiveImageIndex(idx)}
                         className={`group p-2 rounded-2xl border text-left transition-all cursor-pointer ${
                           isSelected
-                            ? selectedProjectId === 'spendsense'
+                            ? selectedProjectId === 'planitory'
+                              ? 'bg-indigo-50/80 border-indigo-600 ring-2 ring-indigo-600/30 shadow-sm'
+                              : selectedProjectId === 'spendsense'
                               ? 'bg-emerald-50/80 border-emerald-500 ring-2 ring-emerald-500/30 shadow-sm'
                               : selectedProjectId === 'blind-ai'
                               ? 'bg-amber-50/80 border-amber-500 ring-2 ring-amber-500/30 shadow-sm'
@@ -687,7 +783,9 @@ export default function CaseStudyModal({
                         </div>
                         <p className={`text-[11px] font-bold truncate ${
                           isSelected
-                            ? selectedProjectId === 'spendsense'
+                            ? selectedProjectId === 'planitory'
+                              ? 'text-indigo-700'
+                              : selectedProjectId === 'spendsense'
                               ? 'text-emerald-700'
                               : selectedProjectId === 'blind-ai'
                               ? 'text-amber-700'
@@ -749,7 +847,9 @@ export default function CaseStudyModal({
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-gray-100">
                 <div className="p-4 bg-white rounded-2xl border border-gray-200">
                   <h5 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5 ${
-                    selectedProjectId === 'spendsense'
+                    selectedProjectId === 'planitory'
+                      ? 'text-indigo-600'
+                      : selectedProjectId === 'spendsense'
                       ? 'text-emerald-600'
                       : selectedProjectId === 'blind-ai'
                       ? 'text-amber-600'
@@ -770,7 +870,9 @@ export default function CaseStudyModal({
 
                 <div className="p-4 bg-white rounded-2xl border border-gray-200">
                   <h5 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5 ${
-                    selectedProjectId === 'spendsense'
+                    selectedProjectId === 'planitory'
+                      ? 'text-indigo-600'
+                      : selectedProjectId === 'spendsense'
                       ? 'text-emerald-600'
                       : selectedProjectId === 'blind-ai'
                       ? 'text-amber-600'
@@ -792,7 +894,9 @@ export default function CaseStudyModal({
                 <div className="p-4 bg-white rounded-2xl border border-gray-200 flex flex-col justify-between">
                   <div>
                     <h5 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5 ${
-                      selectedProjectId === 'spendsense'
+                      selectedProjectId === 'planitory'
+                        ? 'text-indigo-600'
+                        : selectedProjectId === 'spendsense'
                         ? 'text-emerald-600'
                         : selectedProjectId === 'blind-ai'
                         ? 'text-amber-600'
@@ -809,7 +913,9 @@ export default function CaseStudyModal({
                     href="mailto:ranjeetserious8@gmail.com"
                     onClick={onClose}
                     className={`mt-3 inline-flex items-center justify-center gap-1.5 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-all cursor-pointer ${
-                      selectedProjectId === 'spendsense'
+                      selectedProjectId === 'planitory'
+                        ? 'bg-indigo-600 hover:bg-indigo-700'
+                        : selectedProjectId === 'spendsense'
                         ? 'bg-emerald-600 hover:bg-emerald-700'
                         : selectedProjectId === 'blind-ai'
                         ? 'bg-amber-500 hover:bg-amber-600'
