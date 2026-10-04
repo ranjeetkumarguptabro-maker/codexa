@@ -228,8 +228,26 @@ export default function Footer({ onOpenContact }) {
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-[13px] text-[#64748B] gap-4">
             <p>© 2026 Codexa. All rights reserved.</p>
             <div className="flex items-center space-x-6 font-medium">
-              <a href="#privacy" className="hover:text-[#5B3DF5] transition-colors">Privacy Policy</a>
-              <a href="#terms" className="hover:text-[#5B3DF5] transition-colors">Terms of Service</a>
+              <a
+                href="/Codexa_Privacy_Policy.pdf"
+                download="Codexa_Privacy_Policy.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#5B3DF5] transition-colors cursor-pointer"
+                title="Download Codexa Privacy Policy (PDF)"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="/Codexa_Privacy_Policy.pdf"
+                download="Codexa_Privacy_Policy.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#5B3DF5] transition-colors cursor-pointer"
+                title="Download Codexa Terms & Policy (PDF)"
+              >
+                Terms of Service
+              </a>
             </div>
           </div>
 
