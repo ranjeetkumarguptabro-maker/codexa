@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ onOpenContact }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('Home');
@@ -72,13 +72,16 @@ export default function Navbar() {
 
         {/* RIGHT: CTA Button */}
         <div className="hidden md:flex items-center">
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 bg-[#080A24] hover:bg-[#161B46] text-white text-[14px] font-semibold px-6 py-2.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md hover:translate-y-[-1px]"
+          <button
+            onClick={() => {
+              if (onOpenContact) onOpenContact();
+              else window.dispatchEvent(new CustomEvent('open-contact-modal'));
+            }}
+            className="group inline-flex items-center gap-2 bg-[#080A24] hover:bg-[#5B3DF5] text-white text-[14px] font-semibold px-6 py-2.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md hover:translate-y-[-1px] cursor-pointer"
           >
-            <span>Contact Us</span>
+            <span>Contact Me</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </a>
+          </button>
         </div>
 
         {/* Mobile menu toggle */}
@@ -116,14 +119,17 @@ export default function Navbar() {
             ))}
           </div>
           <div className="pt-2">
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 bg-[#080A24] text-white text-[14px] font-semibold px-6 py-3 rounded-full transition-all"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (onOpenContact) onOpenContact();
+                else window.dispatchEvent(new CustomEvent('open-contact-modal'));
+              }}
+              className="w-full flex items-center justify-center gap-2 bg-[#080A24] hover:bg-[#5B3DF5] text-white text-[14px] font-semibold px-6 py-3 rounded-full transition-all cursor-pointer"
             >
-              <span>Contact Us</span>
+              <span>Contact Me</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
         </div>
       )}

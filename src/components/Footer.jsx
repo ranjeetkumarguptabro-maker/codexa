@@ -1,7 +1,7 @@
 import React from 'react';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MessageCircle } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ onOpenContact }) {
   return (
     <footer id="contact" className="bg-[#080A24] text-white pt-20 pb-12 relative overflow-hidden">
       {/* Decorative gradient glow at bottom */}
@@ -18,17 +18,47 @@ export default function Footer() {
             <p className="text-gray-400 text-sm sm:text-base mt-2">
               Let's build your next web app, mobile app, SaaS platform, or AI agent together.
             </p>
-            <p className="text-xs text-purple-300 font-mono mt-3">
-              Direct: ranjeetserious8@gmail.com
-            </p>
+            <div className="flex flex-wrap items-center gap-4 text-xs font-mono mt-3 text-purple-300">
+              <a
+                href="tel:+37126161256"
+                className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"
+              >
+                <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                <span>+371 26161256</span>
+              </a>
+              <span className="text-gray-600">•</span>
+              <a
+                href="mailto:ranjeetserious8@gmail.com"
+                className="hover:text-purple-200 transition-colors flex items-center gap-1.5"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>ranjeetserious8@gmail.com</span>
+              </a>
+            </div>
           </div>
-          <a
-            href="mailto:ranjeetserious8@gmail.com"
-            className="group shrink-0 inline-flex items-center gap-2.5 bg-gradient-to-r from-[#5B3DF5] to-[#7352F7] hover:from-[#522ee6] hover:to-[#683bf0] text-white font-semibold text-sm px-8 py-4 rounded-full shadow-[0_10px_25px_rgba(91,61,245,0.4)] hover:shadow-[0_15px_30px_rgba(91,61,245,0.6)] hover:-translate-y-0.5 transition-all duration-200"
-          >
-            <span>Start Your Project</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </a>
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <button
+              onClick={() => {
+                if (onOpenContact) onOpenContact();
+                else window.dispatchEvent(new CustomEvent('open-contact-modal'));
+              }}
+              className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-[#5B3DF5] to-[#7352F7] hover:from-[#522ee6] hover:to-[#683bf0] text-white font-semibold text-sm px-7 py-3.5 rounded-full shadow-[0_10px_25px_rgba(91,61,245,0.4)] hover:shadow-[0_15px_30px_rgba(91,61,245,0.6)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+            >
+              <span>Contact Me</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+            <a
+              href="https://wa.me/qr/IGIJKXHMGHKED1?s=r"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BA5A] text-white font-semibold text-sm px-6 py-3.5 rounded-full shadow-md shadow-[#25D366]/20 hover:shadow-lg transition-all duration-200"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.04 20.16C10.66 20.16 9.3 19.8 8.09 19.11L7.79 18.94L4.69 19.75L5.51 16.73L5.32 16.42C4.55 15.19 4.14 13.57 4.14 11.91C4.14 7.37 7.84 3.67 12.05 3.67M9.53 7.33C9.35 7.33 9.05 7.4 8.79 7.68C8.54 7.96 7.82 8.63 7.82 10.01C7.82 11.39 8.82 12.72 8.96 12.91C9.1 13.1 10.92 15.9 13.7 17.1C14.36 17.39 14.88 17.56 15.28 17.69C15.94 17.9 16.55 17.87 17.03 17.8C17.56 17.72 18.66 17.13 18.89 16.49C19.12 15.85 19.12 15.3 19.05 15.19C18.98 15.07 18.8 15 18.53 14.87C18.26 14.73 16.94 14.08 16.69 13.99C16.45 13.9 16.27 13.85 16.09 14.13C15.91 14.41 15.39 15.01 15.23 15.2C15.07 15.38 14.92 15.4 14.65 15.27C14.37 15.13 13.5 14.84 12.46 13.92C11.66 13.2 11.11 12.31 10.96 12.03C10.8 11.76 10.94 11.61 11.08 11.47C11.2 11.35 11.35 11.15 11.49 10.99C11.63 10.83 11.67 10.71 11.76 10.53C11.85 10.35 11.81 10.19 11.74 10.05C11.67 9.92 11.13 8.58 10.9 8.04C10.68 7.51 10.45 7.58 10.28 7.57C10.12 7.56 9.94 7.56 9.76 7.56C9.57 7.56 9.35 7.33 9.53 7.33Z" />
+              </svg>
+              <span>WhatsApp</span>
+            </a>
+          </div>
         </div>
 
         {/* Main Footer Links */}
@@ -104,7 +134,20 @@ export default function Footer() {
             </div>
             
             {/* Social Icons Strip */}
-            <div className="flex items-center gap-3 text-gray-400">
+            <div className="flex items-center gap-2.5 text-gray-400">
+              {/* WhatsApp Live */}
+              <a
+                href="https://wa.me/qr/IGIJKXHMGHKED1?s=r"
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-full bg-white/5 hover:bg-emerald-500/20 flex items-center justify-center hover:text-emerald-400 transition-all hover:scale-105"
+                title="WhatsApp: +371 26161256"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.04 20.16C10.66 20.16 9.3 19.8 8.09 19.11L7.79 18.94L4.69 19.75L5.51 16.73L5.32 16.42C4.55 15.19 4.14 13.57 4.14 11.91C4.14 7.37 7.84 3.67 12.05 3.67M9.53 7.33C9.35 7.33 9.05 7.4 8.79 7.68C8.54 7.96 7.82 8.63 7.82 10.01C7.82 11.39 8.82 12.72 8.96 12.91C9.1 13.1 10.92 15.9 13.7 17.1C14.36 17.39 14.88 17.56 15.28 17.69C15.94 17.9 16.55 17.87 17.03 17.8C17.56 17.72 18.66 17.13 18.89 16.49C19.12 15.85 19.12 15.3 19.05 15.19C18.98 15.07 18.8 15 18.53 14.87C18.26 14.73 16.94 14.08 16.69 13.99C16.45 13.9 16.27 13.85 16.09 14.13C15.91 14.41 15.39 15.01 15.23 15.2C15.07 15.38 14.92 15.4 14.65 15.27C14.37 15.13 13.5 14.84 12.46 13.92C11.66 13.2 11.11 12.31 10.96 12.03C10.8 11.76 10.94 11.61 11.08 11.47C11.2 11.35 11.35 11.15 11.49 10.99C11.63 10.83 11.67 10.71 11.76 10.53C11.85 10.35 11.81 10.19 11.74 10.05C11.67 9.92 11.13 8.58 10.9 8.04C10.68 7.51 10.45 7.58 10.28 7.57C10.12 7.56 9.94 7.56 9.76 7.56C9.57 7.56 9.35 7.33 9.53 7.33Z" />
+                </svg>
+              </a>
+
               {/* GitHub */}
               <a
                 href="https://github.com/ranjeetkumarguptabro-maker"
@@ -118,7 +161,7 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Instagram (Replacing Twitter/X) */}
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/codexa_building_mvp/"
                 target="_blank"

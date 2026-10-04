@@ -3,7 +3,7 @@ import FloatingBadge from './FloatingBadge.jsx';
 import CTAButtons from './CTAButtons.jsx';
 import DashboardPreview from './DashboardPreview.jsx';
 
-export default function Hero() {
+export default function Hero({ onOpenContact }) {
   return (
     <section id="home" className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
       {/* 1. HERO BACKGROUND: The exact cloud/gradient asset */}
@@ -78,7 +78,7 @@ export default function Hero() {
           </div>
 
           {/* CTA Buttons */}
-          <CTAButtons />
+          <CTAButtons onOpenContact={onOpenContact} />
         </div>
 
         {/* DASHBOARD PREVIEW SHOWCASE */}
