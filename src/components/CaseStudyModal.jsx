@@ -96,7 +96,6 @@ export default function CaseStudyModal({
       description:
         'Engineered by Codexa with smooth 60 FPS animations, mindful calm-down breathing exercises, safe student community hubs, and structured flow logic.',
       stats: [
-        { label: 'Active Students', value: '150,000+' },
         { label: 'Performance', value: '60 FPS Native' },
         { label: 'Crash-Free', value: '99.98%' },
       ],
@@ -217,7 +216,6 @@ export default function CaseStudyModal({
       description:
         'An intelligent personal finance companion engineered by Codexa. Combines AI receipt scanning, real-time merchant insights, automated budget categorization, retirement compound calculators, and gamified financial learning.',
       stats: [
-        { label: 'Active Savers', value: '250,000+' },
         { label: 'AI Assistant', value: 'Voice & OCR' },
         { label: 'Savings Growth', value: '+34% MoM' },
       ],
@@ -285,7 +283,6 @@ export default function CaseStudyModal({
       description:
         'A next-generation travel & creator platform engineered by Codexa. Connects travelers with local creators who share curated interactive map guides, audio tours, offline GPS navigation, and seamless Stripe micro-transactions.',
       stats: [
-        { label: 'Curated Maps', value: '50,000+' },
         { label: 'Active Creators', value: '12,000+' },
         { label: 'Offline GPS', value: '100% Vector' },
       ],
@@ -345,7 +342,6 @@ export default function CaseStudyModal({
       description:
         'A bespoke luxury real estate platform designed and engineered by Codexa. Features cinematic video walkthroughs, futuristic architectural villas, 3D interactive client review cards, property inquiry concierge, and a comprehensive 8-step user journey.',
       stats: [
-        { label: 'Listed Portfolio', value: '€45M+' },
         { label: 'Walkthrough Tour', value: '49s 60fps' },
         { label: 'Architecture', value: '8-Step UX Flow' },
       ],
@@ -426,9 +422,8 @@ export default function CaseStudyModal({
       rating: '4.9 ★ (AI Product of the Year)',
       headline: 'Autonomous Career Co-Pilot: Semantic Job Matching, Resume Optimization & Recruiter Negotiation',
       description:
-        'A comprehensive AI-driven talent and recruitment ecosystem engineered by Codexa. Combines real-time vacancy aggregation across 46,344+ listings, 92% semantic vector job matching, smart resume builder with ATS scoring (50-80%), deadline alert workflows, and an intelligent recruiter chat co-pilot with automated technical evaluations.',
+        'A comprehensive AI-driven talent and recruitment ecosystem engineered by Codexa. Combines real-time vacancy aggregation, 92% semantic vector job matching, smart resume builder with ATS scoring (50-80%), deadline alert workflows, and an intelligent recruiter chat co-pilot with automated technical evaluations.',
       stats: [
-        { label: 'Active Vacancies', value: '46,344+' },
         { label: 'AI Match Rate', value: '92% Precision' },
         { label: 'Co-Pilot Engine', value: 'Gemini + Vector' },
       ],
@@ -457,8 +452,8 @@ export default function CaseStudyModal({
           src: '/assets/Career GO AI Job Search Monitor.png',
           title: 'Career GO Semantic Job Search Engine (Studio Display)',
           description:
-            'High-volume search platform displaying 46,344 live tech vacancies: Perfect 92% AI match indicator, Senior Frontend Developer (200k-300k P/month), Product Designer (UX/UI), Verified Employer badges, and 1-click AI instant apply.',
-          stepBadge: '02 • 46,344+ Vacancies & AI Matching',
+            'High-volume search platform with live tech vacancies: Perfect 92% AI match indicator, Senior Frontend Developer (200k-300k P/month), Product Designer (UX/UI), Verified Employer badges, and 1-click AI instant apply.',
+          stepBadge: '02 • Vacancy Search & AI Matching',
           isVideo: false,
           isDiagram: false,
         },
@@ -625,7 +620,7 @@ export default function CaseStudyModal({
       tag: 'Featured AI Platform',
       badgeBg: 'bg-purple-700 text-white',
       rating: '4.9 ★ (AI Product of the Year)',
-      desc: 'Autonomous career co-pilot. Semantic job matching across 46k+ vacancies, dynamic ATS resume builder, deadline tracking, and recruiter chat assistant.',
+      desc: 'Autonomous career co-pilot. Semantic job matching, dynamic ATS resume builder, deadline tracking, and recruiter chat assistant.',
       image: '/assets/Career GO AI Dashboard Tablet.png',
       active: true,
     },
@@ -940,27 +935,9 @@ export default function CaseStudyModal({
                   </p>
                 </div>
 
-                {/* Key Metrics Pill Column & QR Code for Blind AI */}
-                <div className="flex flex-col sm:flex-row md:flex-col gap-2.5 shrink-0 w-full md:w-auto">
-                  {currentProject.stats.map((stat, i) => (
-                    <div
-                      key={i}
-                      className={`p-3 rounded-2xl border shadow-2xs text-center md:text-left min-w-[140px] ${
-                        selectedProjectId === 'norvique'
-                          ? 'bg-stone-800/80 border-stone-700'
-                          : 'bg-white border-gray-200'
-                      }`}
-                    >
-                      <p className={`text-[11px] font-semibold ${
-                        selectedProjectId === 'norvique' ? 'text-amber-400' : 'text-gray-500'
-                      }`}>{stat.label}</p>
-                      <p className={`text-lg font-extrabold ${
-                        selectedProjectId === 'norvique' ? 'text-white' : 'text-[#080A24]'
-                      }`}>{stat.value}</p>
-                    </div>
-                  ))}
-
-                  {currentProject.qrCode && (
+                {/* QR Code for Blind AI if available */}
+                {currentProject.qrCode && (
+                  <div className="flex shrink-0 w-full md:w-auto">
                     <div className="p-2.5 bg-white rounded-2xl border border-amber-200 flex items-center gap-2.5 shadow-2xs">
                       <img
                         src={currentProject.qrCode}
@@ -972,8 +949,8 @@ export default function CaseStudyModal({
                         <p className="text-[10px] text-gray-500">iOS & Android App</p>
                       </div>
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
 
               {/* ==============================================================

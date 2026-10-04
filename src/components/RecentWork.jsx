@@ -57,7 +57,7 @@ export default function RecentWork() {
       tag: 'Career GO • AI Agent',
       targetProject: 'career-go',
       coverImage: '/assets/Career GO AI Resume Builder Laptop.png',
-      badgeText: 'AI Co-Pilot • 46k+ Jobs',
+      badgeText: 'AI Career Co-Pilot',
       badgeIcon: Sparkles,
       projectName: 'Career GO Platform',
       projectDesc: 'AI Recruiter & Career Acceleration Co-Pilot',
