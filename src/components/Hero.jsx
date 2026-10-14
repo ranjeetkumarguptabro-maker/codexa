@@ -5,7 +5,6 @@ import {
   Code2,
   BarChart3,
 } from 'lucide-react';
-import DashboardPreview from './DashboardPreview.jsx';
 
 export default function Hero({ onOpenContact }) {
   const handleOpenContact = (e) => {
@@ -18,7 +17,7 @@ export default function Hero({ onOpenContact }) {
   };
 
   return (
-    <section id="home" className="relative pt-28 sm:pt-36 md:pt-40 pb-20 md:pb-28 overflow-hidden bg-white">
+    <section id="home" className="relative pt-28 sm:pt-36 md:pt-40 pb-20 md:pb-24 overflow-hidden bg-white">
       {/* ==============================================================
           1. AMBIENT BACKGROUND ACCENTS & GRID
          ============================================================== */}
@@ -269,13 +268,6 @@ export default function Hero({ onOpenContact }) {
             </div>
           </div>
 
-        </div>
-
-        {/* ==============================================================
-            7. DASHBOARD PREVIEW SHOWCASE (Below Hero Section)
-           ============================================================== */}
-        <div className="mt-12 sm:mt-16 md:mt-20 text-left">
-          <DashboardPreview />
         </div>
 
       </div>

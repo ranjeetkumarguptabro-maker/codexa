@@ -18,9 +18,8 @@ export default function Navbar({ onOpenContact }) {
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
     { name: 'Work', href: '#work' },
-    { name: 'Process', href: '#process' },
-    { name: 'About', href: '#about' },
     { name: 'Pricing', href: '#pricing' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (

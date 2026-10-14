@@ -119,8 +119,8 @@ export default function Footer({ onOpenContact }) {
                 <li><a href="#home" className="hover:text-[#5B3DF5] transition-colors">Home</a></li>
                 <li><a href="#services" className="hover:text-[#5B3DF5] transition-colors">Services</a></li>
                 <li><a href="#work" className="hover:text-[#5B3DF5] transition-colors">Work</a></li>
-                <li><a href="#process" className="hover:text-[#5B3DF5] transition-colors">Process</a></li>
-                <li><a href="#about" className="hover:text-[#5B3DF5] transition-colors">About Us</a></li>
+                <li><a href="#pricing" className="hover:text-[#5B3DF5] transition-colors">Pricing</a></li>
+                <li><a href="#contact" className="hover:text-[#5B3DF5] transition-colors">Contact</a></li>
               </ul>
             </div>
 

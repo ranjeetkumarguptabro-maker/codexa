@@ -3,8 +3,6 @@ import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import Partners from './components/Partners.jsx';
 import Services from './components/Services.jsx';
-import WhyChooseUs from './components/WhyChooseUs.jsx';
-import Process from './components/Process.jsx';
 import RecentWork from './components/RecentWork.jsx';
 import Pricing from './components/Pricing.jsx';
 import Footer from './components/Footer.jsx';
@@ -28,7 +26,7 @@ export default function App() {
       <Navbar onOpenContact={openContact} />
 
       <main>
-        {/* Hero Section with Cloud Background, Floating Badges, and Dashboard Showcase */}
+        {/* Hero Section with Team Presentation, Floating Badges, and Action CTAs */}
         <Hero onOpenContact={openContact} />
 
         {/* Trusted By / Partners Strip */}
@@ -36,12 +34,6 @@ export default function App() {
 
         {/* Services & Capabilities */}
         <Services />
-
-        {/* Why Choose Codexa Metrics */}
-        <WhyChooseUs />
-
-        {/* 3-Step Process & Interactive Project Wizard */}
-        <Process />
 
         {/* Recent Work Showcase (with Kangaroo, Blind AI, SpendSense, Planitory, and Norvique) */}
         <RecentWork />
