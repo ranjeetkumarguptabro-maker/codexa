@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  ArrowRight,
-  Bot,
-  Code2,
-  BarChart3,
-} from 'lucide-react';
+import { ArrowRight, Code2 } from 'lucide-react';
 
 export default function Hero({ onOpenContact }) {
   const handleOpenContact = (e) => {
@@ -46,20 +41,24 @@ export default function Hero({ onOpenContact }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
         {/* ==============================================================
-            2. TOP PILL BADGE
+            2. TOP BADGE GRAPHIC: Growing Startups with Technology
+               (Replaces the old text pill badge)
            ============================================================== */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-purple-100 shadow-[0_2px_12px_rgba(91,61,245,0.06)] text-xs sm:text-[13px] font-semibold text-[#4B5563] backdrop-blur-sm mb-6 sm:mb-8">
-          <span className="text-sm">🚀</span>
-          <span>Empowering Startups with Technology</span>
+        <div className="flex justify-center mb-6 sm:mb-8">
+          <img
+            src="/assets/Growing Startups with Technology (1).png"
+            alt="Growing Startups with Technology"
+            className="h-14 sm:h-18 md:h-20 w-auto object-contain select-none drop-shadow-md hover:scale-105 transition-transform duration-200"
+          />
         </div>
 
         {/* ==============================================================
             3. 3 PERSONS TEAM SHOWCASE (ABOVE THE IMPACT LINE & CONTACT ME)
-               - No snow effect / no white gradient mask
-               - Fully crisp and vibrant cutout
-               - Framed by organic lavender blob, doodles, & floating cards
+               - Crisp and clear cutout, NO snow effect / NO bottom gradient mask
+               - Organic lavender fluid shape
+               - Blue doodle accents & floating code badge
            ============================================================== */}
-        <div className="relative w-full max-w-[620px] sm:max-w-[680px] mx-auto mb-8 sm:mb-10 pt-4">
+        <div className="relative w-full max-w-[620px] sm:max-w-[680px] mx-auto mb-8 sm:mb-10 pt-2">
           
           {/* Organic Fluid Lavender Blob Behind the Team */}
           <div
@@ -123,44 +122,6 @@ export default function Hero({ onOpenContact }) {
             </svg>
           </div>
 
-          {/* ------------------------------------------------------------
-              FLOATING GLASS BADGES
-             ------------------------------------------------------------ */}
-          
-          {/* Top-Left Floating Badge: Grow Faster */}
-          <div className="absolute -top-3 left-0 sm:-top-5 sm:-left-4 lg:-left-8 z-20 animate-float-slow">
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-[0_12px_32px_rgba(91,61,245,0.12)] border border-purple-100 flex items-center gap-3 hover:scale-105 transition-transform duration-200">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center shrink-0 shadow-2xs">
-                <BarChart3 className="w-5 h-5 text-[#2563EB]" />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-[13px] font-bold text-[#080A24] leading-tight font-['Plus_Jakarta_Sans']">
-                  Grow Faster
-                </span>
-                <span className="text-[11px] font-medium text-[#64748B] leading-none mt-1">
-                  With Technology
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Top-Right Floating Badge: AI Agents */}
-          <div className="absolute -top-2 right-0 sm:-top-4 sm:-right-4 lg:-right-8 z-20 animate-float-reverse">
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-[0_12px_32px_rgba(91,61,245,0.12)] border border-purple-100 flex items-center gap-3 hover:scale-105 transition-transform duration-200">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FAF5FF] text-[#7C3AED] flex items-center justify-center shrink-0 shadow-2xs">
-                <Bot className="w-5 h-5 text-[#7C3AED]" />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-[13px] font-bold text-[#080A24] leading-tight font-['Plus_Jakarta_Sans']">
-                  AI Agents
-                </span>
-                <span className="text-[11px] font-medium text-[#64748B] leading-none mt-1">
-                  Automate & Scale
-                </span>
-              </div>
-            </div>
-          </div>
-
           {/* Bottom-Right Floating Code Badge: </> */}
           <div className="absolute bottom-8 -right-2 sm:bottom-12 sm:-right-4 lg:-right-6 z-20">
             <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3 sm:p-3.5 shadow-[0_12px_28px_rgba(91,61,245,0.16)] border border-purple-100 text-[#5B3DF5] transform rotate-6 hover:rotate-0 transition-transform duration-300 cursor-pointer animate-pulse-glow">
@@ -211,63 +172,6 @@ export default function Hero({ onOpenContact }) {
               <span>View Our Work</span>
             </a>
           </div>
-
-          {/* ==============================================================
-              6. MICRO FEATURE STRIP
-             ============================================================== */}
-          <div className="pt-6 sm:pt-8 border-t border-gray-100 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-left">
-            {/* Item 1: AI Agents */}
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-[#F5F3FF] text-[#7C3AED] flex items-center justify-center shrink-0 border border-purple-100 shadow-2xs">
-                <Bot className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[13px] font-bold text-[#080A24] leading-tight font-['Plus_Jakarta_Sans']">
-                  AI Agents
-                </div>
-                <div className="text-[11px] font-medium text-[#64748B] leading-none mt-1">
-                  Automate & Scale
-                </div>
-              </div>
-            </div>
-
-            {/* Divider 1 */}
-            <div className="hidden sm:block w-px h-8 bg-gray-200/80 shrink-0" />
-
-            {/* Item 2: Custom Development */}
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-[#EDE9FE] text-[#5B3DF5] flex items-center justify-center shrink-0 border border-purple-100 shadow-2xs">
-                <Code2 className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[13px] font-bold text-[#080A24] leading-tight font-['Plus_Jakarta_Sans']">
-                  Custom Development
-                </div>
-                <div className="text-[11px] font-medium text-[#64748B] leading-none mt-1">
-                  Web & Mobile Apps
-                </div>
-              </div>
-            </div>
-
-            {/* Divider 2 */}
-            <div className="hidden sm:block w-px h-8 bg-gray-200/80 shrink-0" />
-
-            {/* Item 3: Grow Faster */}
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-[#EEF2FF] text-[#4F46E5] flex items-center justify-center shrink-0 border border-indigo-100 shadow-2xs">
-                <BarChart3 className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[13px] font-bold text-[#080A24] leading-tight font-['Plus_Jakarta_Sans']">
-                  Grow Faster
-                </div>
-                <div className="text-[11px] font-medium text-[#64748B] leading-none mt-1">
-                  With Technology
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </div>
