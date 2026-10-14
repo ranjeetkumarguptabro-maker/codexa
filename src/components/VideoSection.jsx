@@ -24,7 +24,7 @@ export const RadialGradientBackground = ({
 
 export default function VideoSection() {
   return (
-    <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
+    <section className="relative pt-2 sm:pt-4 pb-8 sm:pb-12 overflow-hidden">
       {/* Exact Radial Gradient Background requested by user */}
       <RadialGradientBackground
         gradientFrom="#fff"

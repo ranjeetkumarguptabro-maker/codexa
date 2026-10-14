@@ -56,7 +56,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-24 bg-[#FAFBFD] relative">
+    <section id="services" className="pt-8 sm:pt-12 pb-20 sm:pb-24 bg-[#FAFBFD] relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
