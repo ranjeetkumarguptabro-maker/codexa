@@ -41,30 +41,30 @@ export default function Hero({ onOpenContact }) {
       className="relative pt-28 sm:pt-36 md:pt-40 pb-20 md:pb-24 overflow-hidden bg-white select-none"
     >
       {/* ==============================================================
-          1. EXACT REPLACED GRID BACKGROUND AS REQUESTED
-             - Uses uploaded asset: /assets/hero-grid-bg.png
-             - Interactive cursor parallax shift & radial glow spotlight
+          1. EXACT GRAPH PAPER GRID (Minimalist Off-White Graph Paper Grid.png)
+             - Uses uploaded asset: /assets/minimalist-graph-paper-grid.png
+             - Interactive cursor tracking: translates dynamically as mouse moves
          ============================================================== */}
       
-      {/* The Uploaded Grid Pattern Background */}
+      {/* The Minimalist Off-White Graph Paper Grid Background */}
       <div
-        className="absolute inset-0 pointer-events-none -z-20 transition-all duration-300"
+        className="absolute -inset-16 pointer-events-none -z-20 transition-transform duration-200 ease-out will-change-transform"
         style={{
-          backgroundImage: 'url(/assets/hero-grid-bg.png)',
+          backgroundImage: 'url("/assets/minimalist-graph-paper-grid.png")',
           backgroundRepeat: 'repeat',
-          backgroundSize: '1024px auto',
-          backgroundPosition: `${mousePos.x * 35}px ${mousePos.y * 35}px`,
-          opacity: 0.9,
+          backgroundSize: '1200px auto',
+          transform: `translate3d(${mousePos.x * 60}px, ${mousePos.y * 50}px, 0)`,
+          opacity: 1,
         }}
       />
 
       {/* Interactive Cursor Spotlight / Illumination Glow */}
       <div
-        className="absolute inset-0 pointer-events-none -z-15 transition-opacity duration-500"
+        className="absolute -inset-16 pointer-events-none -z-15 transition-opacity duration-300"
         style={{
           background: spotlightPos.active
-            ? `radial-gradient(650px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(91, 61, 245, 0.085), rgba(124, 58, 237, 0.035) 45%, transparent 75%)`
-            : 'radial-gradient(650px circle at 50% 35%, rgba(91, 61, 245, 0.05), transparent 70%)',
+            ? `radial-gradient(650px circle at ${spotlightPos.x + 64}px ${spotlightPos.y + 64}px, rgba(91, 61, 245, 0.08), rgba(124, 58, 237, 0.02) 50%, transparent 75%)`
+            : 'radial-gradient(650px circle at 50% 35%, rgba(91, 61, 245, 0.04), transparent 70%)',
         }}
       />
 
