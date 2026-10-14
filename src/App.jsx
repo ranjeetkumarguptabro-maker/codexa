@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
+import VideoSection from './components/VideoSection.jsx';
 import Services from './components/Services.jsx';
 import RecentWork from './components/RecentWork.jsx';
 import Pricing from './components/Pricing.jsx';
@@ -27,6 +28,9 @@ export default function App() {
       <main>
         {/* Hero Section with Team Presentation, Floating Badges, and Action CTAs */}
         <Hero onOpenContact={openContact} />
+
+        {/* Video Section with Radial Gradient Background (Directly below Hero) */}
+        <VideoSection />
 
         {/* Services & Capabilities */}
         <Services />
