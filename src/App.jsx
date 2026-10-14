@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import VideoSection from './components/VideoSection.jsx';
+import SocialPresence from './components/SocialPresence.jsx';
 import Services from './components/Services.jsx';
 import RecentWork from './components/RecentWork.jsx';
 import Pricing from './components/Pricing.jsx';
@@ -31,6 +32,9 @@ export default function App() {
 
         {/* Video Section with Radial Gradient Background (Directly below Hero) */}
         <VideoSection />
+
+        {/* Social Presence Reels Showcase (Moving every 3 seconds to the left) */}
+        <SocialPresence />
 
         {/* Services & Capabilities */}
         <Services />
