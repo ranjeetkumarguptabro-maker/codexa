@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
-import Partners from './components/Partners.jsx';
 import Services from './components/Services.jsx';
 import RecentWork from './components/RecentWork.jsx';
 import Pricing from './components/Pricing.jsx';
@@ -28,9 +27,6 @@ export default function App() {
       <main>
         {/* Hero Section with Team Presentation, Floating Badges, and Action CTAs */}
         <Hero onOpenContact={openContact} />
-
-        {/* Trusted By / Partners Strip */}
-        <Partners />
 
         {/* Services & Capabilities */}
         <Services />
