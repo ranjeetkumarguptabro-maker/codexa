@@ -41,15 +41,23 @@ export default function Hero({ onOpenContact }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
         {/* ==============================================================
-            2. TOP BADGE GRAPHIC: Growing Startups with Technology
-               (Replaces the old text pill badge)
+            2. TOP BADGE: Growing Startups with Technology
+               (Constructed with pure CSS/Tailwind - no image boundaries)
            ============================================================== */}
-        <div className="flex justify-center mb-6 sm:mb-8">
-          <img
-            src="/assets/Growing Startups with Technology (1).png"
-            alt="Growing Startups with Technology"
-            className="h-14 sm:h-18 md:h-20 w-auto object-contain select-none drop-shadow-md hover:scale-105 transition-transform duration-200"
-          />
+        <div className="inline-flex flex-col items-center select-none mb-6 sm:mb-8 transition-transform duration-200 hover:scale-105 cursor-default">
+          {/* Top Line: Growing Startups (Bordered Box) */}
+          <div className="relative z-10 transform -rotate-[1deg] sm:-rotate-[1.5deg] bg-white border-2 sm:border-[2.5px] border-[#5B3DF5] px-4 sm:px-6 py-1 sm:py-1.5 shadow-xs">
+            <span className="text-lg sm:text-2xl md:text-[26px] font-extrabold text-[#080A24] tracking-tight font-['Plus_Jakarta_Sans'] leading-tight">
+              Growing Startups
+            </span>
+          </div>
+
+          {/* Bottom Line: with Technology (Filled Purple Box) */}
+          <div className="relative -mt-2 sm:-mt-2.5 z-0 transform -rotate-[2deg] sm:-rotate-[2.5deg] bg-[#5B3DF5] px-6 sm:px-8 py-1.5 sm:py-2 shadow-[0_8px_25px_rgba(91,61,245,0.35)]">
+            <span className="text-xl sm:text-3xl md:text-[32px] font-extrabold text-white tracking-tight font-['Plus_Jakarta_Sans'] leading-tight">
+              with Technology
+            </span>
+          </div>
         </div>
 
         {/* ==============================================================
