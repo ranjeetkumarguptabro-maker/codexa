@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Code2 } from 'lucide-react';
 
 export default function Hero({ onOpenContact }) {
+  // Normalized mouse position (-0.5 to 0.5) for parallax calculations
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  // Raw pixel coordinates for the interactive cursor spotlight
+  const [spotlightPos, setSpotlightPos] = useState({ x: 500, y: 300, active: false });
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setMousePos({ x, y });
+    setSpotlightPos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      active: true,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos({ x: 0, y: 0 });
+    setSpotlightPos((prev) => ({ ...prev, active: false }));
+  };
+
   const handleOpenContact = (e) => {
     if (e) e.preventDefault();
     if (onOpenContact) {
@@ -12,39 +34,77 @@ export default function Hero({ onOpenContact }) {
   };
 
   return (
-    <section id="home" className="relative pt-28 sm:pt-36 md:pt-40 pb-20 md:pb-24 overflow-hidden bg-white">
+    <section
+      id="home"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative pt-28 sm:pt-36 md:pt-40 pb-20 md:pb-24 overflow-hidden bg-white select-none"
+    >
       {/* ==============================================================
-          1. AMBIENT BACKGROUND ACCENTS & GRID
+          1. EXACT REPLACED GRID BACKGROUND AS REQUESTED
+             - Uses uploaded asset: /assets/hero-grid-bg.png
+             - Interactive cursor parallax shift & radial glow spotlight
          ============================================================== */}
       
-      {/* Subtle Grid Lines Overlay */}
+      {/* The Uploaded Grid Pattern Background */}
       <div
-        className="absolute inset-0 pointer-events-none -z-10 opacity-70"
+        className="absolute inset-0 pointer-events-none -z-20 transition-all duration-300"
         style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(91, 61, 245, 0.045) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(91, 61, 245, 0.045) 1px, transparent 1px)
-          `,
-          backgroundSize: '48px 48px',
+          backgroundImage: 'url(/assets/hero-grid-bg.png)',
+          backgroundRepeat: 'repeat',
+          backgroundSize: '1024px auto',
+          backgroundPosition: `${mousePos.x * 35}px ${mousePos.y * 35}px`,
+          opacity: 0.9,
         }}
       />
 
-      {/* Top-Right Soft Lavender Ambient Gradient Blob */}
-      <div className="absolute top-0 right-0 w-[550px] sm:w-[700px] h-[450px] sm:h-[600px] bg-gradient-to-bl from-[#DDD6FE]/40 via-[#EDE9FE]/25 to-transparent blur-3xl pointer-events-none -z-10" />
+      {/* Interactive Cursor Spotlight / Illumination Glow */}
+      <div
+        className="absolute inset-0 pointer-events-none -z-15 transition-opacity duration-500"
+        style={{
+          background: spotlightPos.active
+            ? `radial-gradient(650px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(91, 61, 245, 0.085), rgba(124, 58, 237, 0.035) 45%, transparent 75%)`
+            : 'radial-gradient(650px circle at 50% 35%, rgba(91, 61, 245, 0.05), transparent 70%)',
+        }}
+      />
 
-      {/* Center Soft Purple Blob (behind team) */}
-      <div className="absolute top-28 left-1/2 -translate-x-1/2 w-[650px] sm:w-[850px] h-[550px] sm:h-[700px] bg-gradient-to-b from-[#EDE9FE]/55 via-[#DDD6FE]/30 to-transparent blur-3xl rounded-full pointer-events-none -z-10" />
+      {/* Ambient Top-Right Lavender Gradient Blob (Drifts with Cursor) */}
+      <div
+        className="absolute top-0 right-0 w-[550px] sm:w-[700px] h-[450px] sm:h-[600px] bg-gradient-to-bl from-[#DDD6FE]/40 via-[#EDE9FE]/25 to-transparent blur-3xl pointer-events-none -z-10 transition-transform duration-300 ease-out"
+        style={{
+          transform: `translate3d(${mousePos.x * -45}px, ${mousePos.y * -35}px, 0)`,
+        }}
+      />
 
-      {/* Bottom-Left Ambient Glow */}
-      <div className="absolute bottom-16 left-0 w-[380px] sm:w-[500px] h-[350px] sm:h-[450px] bg-gradient-to-tr from-[#EDE9FE]/40 to-transparent blur-3xl rounded-full pointer-events-none -z-10" />
+      {/* Ambient Center Purple Blob (Drifts with Cursor) */}
+      <div
+        className="absolute top-28 left-1/2 -translate-x-1/2 w-[650px] sm:w-[850px] h-[550px] sm:h-[700px] bg-gradient-to-b from-[#EDE9FE]/55 via-[#DDD6FE]/30 to-transparent blur-3xl rounded-full pointer-events-none -z-10 transition-transform duration-300 ease-out"
+        style={{
+          transform: `translate3d(calc(-50% + ${mousePos.x * 30}px), ${mousePos.y * 25}px, 0)`,
+        }}
+      />
+
+      {/* Ambient Bottom-Left Glow */}
+      <div
+        className="absolute bottom-16 left-0 w-[380px] sm:w-[500px] h-[350px] sm:h-[450px] bg-gradient-to-tr from-[#EDE9FE]/40 to-transparent blur-3xl rounded-full pointer-events-none -z-10 transition-transform duration-300 ease-out"
+        style={{
+          transform: `translate3d(${mousePos.x * -25}px, ${mousePos.y * -20}px, 0)`,
+        }}
+      />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
         {/* ==============================================================
             2. TOP BADGE: Growing Startups with Technology
-               (Constructed with pure CSS/Tailwind - no image boundaries)
+               - Pure CSS / Tailwind (no image boundaries)
+               - Interactive subtle float with cursor movement
            ============================================================== */}
-        <div className="inline-flex flex-col items-center select-none mb-6 sm:mb-8 transition-transform duration-200 hover:scale-105 cursor-default">
+        <div
+          className="inline-flex flex-col items-center select-none mb-6 sm:mb-8 transition-transform duration-300 ease-out hover:scale-105 cursor-default"
+          style={{
+            transform: `translate3d(${mousePos.x * 12}px, ${mousePos.y * -8}px, 0)`,
+          }}
+        >
           {/* Top Line: Growing Startups (Bordered Box) */}
           <div className="relative z-10 transform -rotate-[1deg] sm:-rotate-[1.5deg] bg-white border-2 sm:border-[2.5px] border-[#5B3DF5] px-4 sm:px-6 py-1 sm:py-1.5 shadow-xs">
             <span className="text-lg sm:text-2xl md:text-[26px] font-extrabold text-[#080A24] tracking-tight font-['Plus_Jakarta_Sans'] leading-tight">
@@ -61,18 +121,25 @@ export default function Hero({ onOpenContact }) {
         </div>
 
         {/* ==============================================================
-            3. 3 PERSONS TEAM SHOWCASE (ABOVE THE IMPACT LINE & CONTACT ME)
-               - Crisp and clear cutout, NO snow effect / NO bottom gradient mask
-               - Organic lavender fluid shape
-               - Blue doodle accents & floating code badge
+            3. 3 PERSONS TEAM SHOWCASE (INTERACTIVE CURSOR 3D PARALLAX)
+               - 3D perspective rotation and translation tracking cursor
+               - Multi-depth doodle arrows and floating code badge
+               - Crisp cutout with NO snow effect / NO gradient mask
            ============================================================== */}
-        <div className="relative w-full max-w-[620px] sm:max-w-[680px] mx-auto mb-8 sm:mb-10 pt-2">
+        <div
+          className="relative w-full max-w-[620px] sm:max-w-[680px] mx-auto mb-8 sm:mb-10 pt-2 transition-transform duration-300 ease-out"
+          style={{
+            transform: `perspective(1000px) rotateY(${mousePos.x * 10}deg) rotateX(${-mousePos.y * 10}deg) translate3d(${mousePos.x * 15}px, ${mousePos.y * 12}px, 0)`,
+            transformStyle: 'preserve-3d',
+          }}
+        >
           
           {/* Organic Fluid Lavender Blob Behind the Team */}
           <div
-            className="absolute inset-0 w-full h-[90%] top-1/2 -translate-y-1/2 bg-gradient-to-br from-[#EDE9FE] via-[#DDD6FE]/70 to-[#E0E7FF]/80 rounded-[48px] sm:rounded-[64px] shadow-[0_20px_50px_rgba(91,61,245,0.08)] pointer-events-none -z-0"
+            className="absolute inset-0 w-full h-[90%] top-1/2 -translate-y-1/2 bg-gradient-to-br from-[#EDE9FE] via-[#DDD6FE]/70 to-[#E0E7FF]/80 rounded-[48px] sm:rounded-[64px] shadow-[0_20px_50px_rgba(91,61,245,0.08)] pointer-events-none -z-0 transition-transform duration-300 ease-out"
             style={{
               borderRadius: '42% 58% 54% 46% / 45% 42% 58% 55%',
+              transform: `translate3d(${mousePos.x * -8}px, ${mousePos.y * -8}px, -20px)`,
             }}
           />
 
@@ -80,11 +147,16 @@ export default function Hero({ onOpenContact }) {
           <div className="absolute inset-0 w-[110%] h-[95%] -translate-x-[5%] top-1/2 -translate-y-1/2 bg-purple-300/30 blur-3xl rounded-full pointer-events-none -z-10" />
 
           {/* ------------------------------------------------------------
-              DOODLE ACCENTS (Playful Hand-drawn Blue Accents)
+              DOODLE ACCENTS (Interactive Multi-Layer Parallax)
              ------------------------------------------------------------ */}
           
           {/* Left Blue Curved Arrow Doodle */}
-          <div className="absolute top-16 -left-3 sm:top-24 sm:-left-6 lg:-left-8 z-20 pointer-events-none">
+          <div
+            className="absolute top-16 -left-3 sm:top-24 sm:-left-6 lg:-left-8 z-20 pointer-events-none transition-transform duration-300 ease-out"
+            style={{
+              transform: `translate3d(${mousePos.x * -24}px, ${mousePos.y * -20}px, 30px)`,
+            }}
+          >
             <svg
               className="w-10 h-10 sm:w-12 sm:h-12 text-[#2563EB]"
               viewBox="0 0 48 48"
@@ -100,7 +172,12 @@ export default function Hero({ onOpenContact }) {
           </div>
 
           {/* Top Blue Slanted Tick Marks Doodle */}
-          <div className="absolute top-2 sm:top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+          <div
+            className="absolute top-2 sm:top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-transform duration-300 ease-out"
+            style={{
+              transform: `translate3d(calc(-50% + ${mousePos.x * 18}px), ${mousePos.y * -16}px, 35px)`,
+            }}
+          >
             <svg
               className="w-7 h-7 sm:w-8 sm:h-8 text-[#2563EB]"
               viewBox="0 0 32 32"
@@ -115,7 +192,12 @@ export default function Hero({ onOpenContact }) {
           </div>
 
           {/* Right Blue Curved Arrow Doodle */}
-          <div className="absolute top-24 -right-2 sm:top-32 sm:-right-6 lg:-right-8 z-20 pointer-events-none">
+          <div
+            className="absolute top-24 -right-2 sm:top-32 sm:-right-6 lg:-right-8 z-20 pointer-events-none transition-transform duration-300 ease-out"
+            style={{
+              transform: `translate3d(${mousePos.x * 26}px, ${mousePos.y * 22}px, 30px)`,
+            }}
+          >
             <svg
               className="w-8 h-10 sm:w-10 sm:h-12 text-[#2563EB]"
               viewBox="0 0 40 48"
@@ -130,8 +212,13 @@ export default function Hero({ onOpenContact }) {
             </svg>
           </div>
 
-          {/* Bottom-Right Floating Code Badge: </> */}
-          <div className="absolute bottom-8 -right-2 sm:bottom-12 sm:-right-4 lg:-right-6 z-20">
+          {/* Bottom-Right Floating Code Badge: </> (Floating Parallax) */}
+          <div
+            className="absolute bottom-8 -right-2 sm:bottom-12 sm:-right-4 lg:-right-6 z-20 transition-transform duration-300 ease-out"
+            style={{
+              transform: `translate3d(${mousePos.x * 32}px, ${mousePos.y * 28}px, 45px)`,
+            }}
+          >
             <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3 sm:p-3.5 shadow-[0_12px_28px_rgba(91,61,245,0.16)] border border-purple-100 text-[#5B3DF5] transform rotate-6 hover:rotate-0 transition-transform duration-300 cursor-pointer animate-pulse-glow">
               <Code2 className="w-6 h-6 stroke-[2.75]" />
             </div>
@@ -140,7 +227,12 @@ export default function Hero({ onOpenContact }) {
           {/* ------------------------------------------------------------
               THE 3 PERSONS CUTOUT (100% CLEAR - NO SNOW EFFECT / NO MASK)
              ------------------------------------------------------------ */}
-          <div className="relative w-full z-10">
+          <div
+            className="relative w-full z-10 transition-transform duration-300 ease-out"
+            style={{
+              transform: `translate3d(${mousePos.x * 8}px, ${mousePos.y * 6}px, 10px)`,
+            }}
+          >
             <img
               src="/assets/3personsimage.png"
               alt="Codexa Founders & Engineering Team"
@@ -153,7 +245,12 @@ export default function Hero({ onOpenContact }) {
         {/* ==============================================================
             4. IMPACT SUBTITLE (BELOW THE 3 PERSONS IMAGE)
            ============================================================== */}
-        <div className="max-w-2xl mx-auto space-y-5">
+        <div
+          className="max-w-2xl mx-auto space-y-5 transition-transform duration-300 ease-out"
+          style={{
+            transform: `translate3d(${mousePos.x * 6}px, ${mousePos.y * 4}px, 0)`,
+          }}
+        >
           <p className="text-lg sm:text-xl md:text-[22px] font-bold text-[#080A24] leading-snug tracking-tight font-['Plus_Jakarta_Sans']">
             Websites, Web Apps, Mobile Apps, SaaS and AI Agents <br className="hidden sm:inline" />
             <span className="text-[#3D52F5]">built for real impact.</span>
