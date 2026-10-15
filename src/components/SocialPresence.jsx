@@ -173,24 +173,28 @@ export default function SocialPresence() {
         {/* Header matching exact sec1.png reference */}
         <div className="flex flex-col items-center justify-center text-center mb-8 sm:mb-12">
           
-          {/* Top Pill: Social Presence */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 bg-white/90 shadow-sm backdrop-blur-md mb-3.5 hover:border-gray-300 transition-colors">
-            <span className="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 animate-pulse" />
+          {/* Top Pill: Social Presence with images (2).jpeg Instagram logo */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gray-200 bg-white/95 shadow-sm backdrop-blur-md mb-3.5 hover:border-gray-300 transition-colors">
+            <img 
+              src="/assets/images (2).jpeg" 
+              alt="Instagram" 
+              className="w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-[4px] object-cover shadow-xs" 
+            />
             <span className="text-xs sm:text-sm font-semibold tracking-wide text-[#080A24]">
               Social Presence
             </span>
           </div>
 
-          {/* Main Heading: Trusted by 130k+ People */}
+          {/* Main Heading: Trusted by many people with 'people' in purple */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#080A24] tracking-tight">
-            Trusted by 130k+ People
+            Trusted by many <span className="text-[#5B3DF5]">people</span>
           </h2>
 
-          {/* Secondary helper info with auto-move status & arrow buttons */}
+          {/* Secondary helper info with Project Reels & arrow buttons */}
           <div className="mt-4 flex items-center justify-center gap-3">
-            <span className="text-xs sm:text-sm text-gray-500 font-medium flex items-center gap-1.5">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" />
-              Live Reels • Moves every 3s
+            <span className="text-xs sm:text-sm text-gray-600 font-semibold flex items-center gap-1.5">
+              <span className="inline-block w-2 h-2 rounded-full bg-[#5B3DF5]" />
+              Project Reels
             </span>
 
             <div className="h-4 w-px bg-gray-200" />

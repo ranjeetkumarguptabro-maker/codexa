@@ -31,7 +31,7 @@ export default function Hero({ onOpenContact }) {
   return (
     <section
       id="home"
-      className="relative flex flex-col justify-center items-center pt-28 sm:pt-32 pb-4 sm:pb-6 overflow-hidden bg-[#FAFBFD] select-none"
+      className="relative flex flex-col justify-center items-center pt-16 sm:pt-20 pb-4 sm:pb-6 overflow-hidden bg-[#FAFBFD] select-none"
     >
       {/* ==============================================================
           1. EXACT MINIMALIST GRAPH PAPER GRID BACKGROUND
