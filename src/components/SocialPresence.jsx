@@ -259,14 +259,10 @@ export default function SocialPresence() {
                   />
 
                   {/* Top Instagram Pill Badge */}
-                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none z-10">
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[11px] font-medium border border-white/10 shadow-sm">
+                  <div className="absolute top-3.5 left-3.5 flex items-center pointer-events-none z-10">
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/65 backdrop-blur-md text-white text-[11px] font-medium border border-white/15 shadow-sm">
                       <InstagramIcon className="w-3.5 h-3.5 text-pink-400" />
-                      <span>Reel</span>
-                    </div>
-
-                    <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white/90 text-[11px] font-medium border border-white/10">
-                      <span>{reel.views} views</span>
+                      <span>Instagram Reel</span>
                     </div>
                   </div>
 
