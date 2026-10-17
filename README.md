@@ -1,10 +1,6 @@
 # Codexa — AI-Powered Web & Mobile Development
 
 <p align="center">
-  <img src="public/assets/Codexa%20Digital%20Growth%20Landing%20Page.png" alt="Codexa Landing Page Hero Preview" width="100%" />
-</p>
-
-<p align="center">
   <strong>Digital Products That Grow Businesses</strong><br />
   High-performance landing pages, full-stack web applications, native mobile apps, and autonomous AI agents.
 </p>
@@ -25,15 +21,41 @@
 
 ---
 
-## ✨ Features & Capabilities
+## ✨ Features & Architecture
 
-### 🖥️ Interactive 3D Hero & Dashboard
-- **Live SaaS Simulation**: Toggleable interactive dashboard preview featuring simulated metrics, live revenue charts, conversion analytics, and user activity feeds.
-- **Dynamic Cloud Backdrop & Ambient Glows**: Layered visual depth with responsive floating feature badges and smooth CSS animations.
+### 📐 Interactive Graph Paper Grid Hero
+- **Architectural Off-White Grid**: Layered graph paper grid with real-time cursor tracking and interactive spotlight illumination.
+- **3D Team Parallax Cutout**: 3-person team presentation with interactive 3D perspective tilt that reacts smoothly to mouse movements.
+- **Growing Startups with Technology Badge**: Clean CSS badge with brand purple accents.
+- **Quick Action CTAs**: Instant access to the contact modal and portfolio work.
+
+### 🎥 Featured Video Showcase
+- **Centered YouTube Player**: Embedded video presentation with a rounded glassmorphic frame and soft outer glow.
+- **Radial Gradient Background**: Custom radial gradient backdrop designed to highlight the video player seamlessly.
+
+### 👥 Meet The Builders Behind Live Products
+- **Authentic 6-Photo Bento Collage**: Showcases real engineering moments, including:
+  - Founders presenting the live AI Professor display.
+  - FinQuest Competition award-winning team celebration.
+  - Collaborative sprint sessions planning app architectures.
+  - Tech talks and live stage presentations with microphones.
+  - Multi-screen developer workstations running live builds.
+- **Subtle Styling Accents**: Clean rounded cards, delicate graph paper grid lines, and decorative purple corner doodles.
+
+### 📱 Social Presence — Project Reels
+- **Continuous 3-Second Movement**: Auto-sliding infinite reel carousel that advances one card to the left every 3 seconds.
+- **Interactive Controls**: Touch swipe support on mobile, pause-on-hover, arrow chevrons, and active dot indicators.
+- **Direct Instagram Links**: Real-world case study reels highlighting client deals and software builds:
+  - Restaurant app build & client deal.
+  - Clinic website development.
+  - AI & vibe-coding developer tools breakdown.
+  - Coffee shop dashboard engineering.
+  - Building a software company at 20.
+  - Mobile app development journeys.
 
 ### 💼 In-Depth Interactive Case Studies
 Interactive modals allow visitors to explore end-to-end architectures, high-resolution screens, and user journey breakdowns:
-- **🏢 Norvique Real Estate**: Curated luxury villas in Latvia. Features an embedded 49-second video walkthrough tour, an 8-step user flow diagram, and a 3D client review deck.
+- **🏢 Norvique Real Estate**: Curated luxury villas in Latvia. Features an embedded video walkthrough tour, an 8-step user flow diagram, and a 3D client review deck.
 - **🛍️ Under Armour Retail**: Adaptive e-commerce storefront with dual-pane foldable retail layouts, sub-second load times, and streamlined 1-click checkout.
 - **🤖 Career GO Platform**: AI-powered career accelerator featuring resume scoring algorithms, automated recruiter chat simulations, and a 46k+ job search engine.
 - **📱 Mobile Application Suite**:
@@ -42,13 +64,10 @@ Interactive modals allow visitors to explore end-to-end architectures, high-reso
   - **SpendSense**: Conversational AI personal finance companion with a 15-step financial growth journey and 10-screen breakdown.
   - **Planitory**: Travel guide and social curation maps app with offline vector GPS and Stripe micro-transactions.
 
-### 🟣 Modern Lavender Contact System
+### 🟣 Modern Contact System & WhatsApp QR
 - **Two-Column Contact Modal**: Custom modal featuring direct input validation (Name, Email, Phone, Message), agreement terms checkbox, and direct mail dispatch.
 - **Embedded WhatsApp QR Code**: Displays the official WhatsApp QR code inside a stylish dashed card for instant smartphone scanning, plus a direct 1-click WhatsApp conversation launcher.
-- **Direct Line**: Direct contact availability for project inquiries (+371 26161256 / `ranjeetserious8@gmail.com`).
-
-### 💬 Persistent Floating WhatsApp Widget
-- Floating quick-access badge anchored at the bottom-right corner with a custom WhatsApp brand icon, allowing visitors to start a WhatsApp chat or launch the inquiry modal at any time.
+- **Persistent Floating WhatsApp Widget**: Quick-access floating badge anchored at the bottom-right corner for instant communication.
 
 ### 📄 Legal & Compliance Integration
 - **Direct PDF Download**: Footer links for **"Privacy Policy"** and **"Terms of Service"** trigger an instant download of the official [`Codexa_Privacy_Policy.pdf`](public/Codexa_Privacy_Policy.pdf).
@@ -83,27 +102,32 @@ Codexa offers simple, transparent, and fixed-scope pricing with active seasonal 
 ```text
 codexa/
 ├── public/
-│   ├── assets/                     # High-resolution mockups, 3D icons, QR codes, video tours
-│   │   ├── Codexa Digital Growth Landing Page.png
-│   │   ├── Modern Lavender Contact Form Mockup.png
+│   ├── assets/                     # High-resolution mockups, team photos, reels, QR codes
+│   │   ├── 3personsimage.png
+│   │   ├── img.png
+│   │   ├── imgg2.png
+│   │   ├── imgg3.png
+│   │   ├── imgg4.png
+│   │   ├── imgg5.png
+│   │   ├── builder-speaker.png
+│   │   ├── reel-1.png ... reel-8.png
 │   │   ├── ranjeet-whatsapp-qr.png
-│   │   ├── whatsapp-custom-icon.png
 │   │   └── ...
-│   └── Codexa_Privacy_Policy.pdf   # Official downloadable legal policy document
+│   └── Codexa_Privacy_Policy.pdf   # Official legal policy document
 ├── src/
 │   ├── components/
 │   │   ├── CaseStudyModal.jsx      # Interactive showcase modal with slides & architecture
 │   │   ├── ContactModal.jsx        # Modern Lavender contact form + WhatsApp QR
 │   │   ├── FloatingWhatsApp.jsx    # Persistent bottom-right WhatsApp quick action
 │   │   ├── Footer.jsx              # Footer with CTA, logo & legal PDF download links
-│   │   ├── Hero.jsx                # Hero headline, badges & interactive 3D dashboard
+│   │   ├── Hero.jsx                # Interactive Graph Paper Grid, 3D team parallax & badges
+│   │   ├── MeetTheBuilders.jsx     # 6-photo bento collage showcasing real founders & builds
 │   │   ├── Navbar.jsx              # Responsive header navigation & CTA button
-│   │   ├── Partners.jsx            # Tech stack & partner brand strip
 │   │   ├── Pricing.jsx             # Tiered pricing cards with glossy 3D art & discounts
-│   │   ├── Process.jsx             # 3-step project delivery wizard
 │   │   ├── RecentWork.jsx          # Filterable portfolio showcase cards
 │   │   ├── Services.jsx            # Core service offerings
-│   │   └── WhyChooseUs.jsx         # Performance metrics & value propositions
+│   │   ├── SocialPresence.jsx      # Continuous 3s auto-sliding Instagram reels carousel
+│   │   └── VideoSection.jsx        # Centered YouTube video player with radial gradient
 │   ├── App.jsx                     # Application layout and global modal controller
 │   ├── index.css                   # Tailwind v4 import & custom styling
 │   └── main.jsx                    # React entrypoint
