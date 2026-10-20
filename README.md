@@ -93,7 +93,7 @@ Codexa offers simple, transparent, and fixed-scope pricing with active seasonal 
 - **Typography**: Plus Jakarta Sans
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Analytics & Telemetry**: `@vercel/analytics` + Vercel Speed Insights
-- **Supported Integrations**: Supabase, AWS, Framer, PHP, TypeScript, Claude AI
+- **Supported Integrations**: Supabase , AWS, Framer, PHP, TypeScript, Claude AI
 
 ---
 
