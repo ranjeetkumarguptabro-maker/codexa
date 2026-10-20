@@ -47,7 +47,7 @@
 - **Interactive Controls**: Touch swipe support on mobile, pause-on-hover, arrow chevrons, and active dot indicators.
 - **Direct Instagram Links**: Real-world case study reels highlighting client deals and software builds:
   - Restaurant app build & client deal.
-  - Clinic website development.
+  - Clinic website developm ent.
   - AI & vibe-coding developer tools breakdown.
   - Coffee shop dashboard engineering.
   - Building a software company at 20.
